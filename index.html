@@ -1113,13 +1113,12 @@
       <div class="modal-head">
         <div class="modal-head-txt">
           <h3 id="modalTitle">Agendar uma Demo</h3>
-          <p>Preencha os dados abaixo e entraremos em contato.</p>
+          <p>Preencha os dados abaixo e você será redirecionado para o agendamento.</p>
         </div>
         <button class="modal-close" id="modalClose" aria-label="Fechar">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
       </div>
-
       <div class="modal-body" id="demoFormWrap">
         <div class="form-row">
           <div class="form-group">
@@ -1131,45 +1130,40 @@
             <input type="tel" id="f-numero" placeholder="+55 11 9 0000-0000" autocomplete="tel" />
           </div>
         </div>
-
         <div class="form-group">
           <label for="f-email">E-mail profissional</label>
           <input type="email" id="f-email" placeholder="voce@empresa.com" autocomplete="email" />
         </div>
-
         <div class="form-group">
           <label for="f-trabalho">Área de atuação</label>
           <select id="f-trabalho">
             <option value="" disabled selected>Selecione seu segmento</option>
+            <option value="Investment Banking">Investment Banking</option>
             <option value="Private Equity">Private Equity</option>
-            <option value="Investment Bank">Investment Bank</option>
-            <option value="Corporate">Corporate</option>
             <option value="Venture Capital">Venture Capital</option>
-            <option value="Hedge Fund">Hedge Fund</option>
             <option value="Private Debt">Private Debt</option>
             <option value="Private Credit">Private Credit</option>
+            <option value="Hedge Fund">Hedge Fund</option>
+            <option value="Corporate">Corporate</option>
+            <option value="Outro">Outro</option>
           </select>
         </div>
-
         <div class="form-group">
           <label for="f-onde">Onde nos conheceu?</label>
-          <input type="text" id="f-onde" placeholder="LinkedIn, indicação, evento…" />
+          <select id="f-onde">
+            <option value="" disabled selected>Selecione uma opção</option>
+            <option value="TikTok">TikTok</option>
+            <option value="Instagram">Instagram</option>
+            <option value="IA">IA</option>
+            <option value="LinkedIn">LinkedIn</option>
+            <option value="Outro">Outro</option>
+          </select>
         </div>
-
         <div class="form-error" id="formError">Por favor, preencha todos os campos obrigatórios.</div>
-
         <button class="btn-submit" id="btnSubmit">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Confirmar agendamento
+          Agendar Demo
         </button>
-      </div>
-
-      <div class="form-success" id="formSuccess">
-        <div class="success-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <h4>Solicitação enviada!</h4>
-        <p>Recebemos seus dados e entraremos em contato em breve para confirmar sua demo.</p>
       </div>
     </div>
   </div>
@@ -1278,11 +1272,11 @@
     const SUPABASE_KEY  = 'sb_publishable_Tw6qvS0K7yHTxl9CTh-hzQ_S3kyHeAz';
     const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    // ── Modal ─────────────────────────────────────────────────────
+    // ── Modal demo ────────────────────────────────────────────────
+    const CALENDAR_URL = 'https://calendar.app.google/H2NCFacTdVX1V1P5A';
     const modal      = document.getElementById('demoModal');
     const modalClose = document.getElementById('modalClose');
     const formWrap   = document.getElementById('demoFormWrap');
-    const formSuc    = document.getElementById('formSuccess');
     const formErr    = document.getElementById('formError');
     const btnSubmit  = document.getElementById('btnSubmit');
 
@@ -1302,17 +1296,15 @@
     modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-    // ── Form submit ───────────────────────────────────────────────
     btnSubmit.addEventListener('click', async () => {
-      const nome         = document.getElementById('f-nome').value.trim();
-      const numero       = document.getElementById('f-numero').value.trim();
-      const email        = document.getElementById('f-email').value.trim();
-      const trabalho     = document.getElementById('f-trabalho').value;
-      const onde_conheceu = document.getElementById('f-onde').value.trim();
-
+      const nome          = document.getElementById('f-nome').value.trim();
+      const numero        = document.getElementById('f-numero').value.trim();
+      const email         = document.getElementById('f-email').value.trim();
+      const trabalho      = document.getElementById('f-trabalho').value;
+      const onde_conheceu = document.getElementById('f-onde').value;
       formErr.classList.remove('show');
 
-      if (!nome || !numero || !email || !trabalho) {
+      if (!nome || !numero || !email || !trabalho || !onde_conheceu) {
         formErr.textContent = 'Por favor, preencha todos os campos obrigatórios.';
         formErr.classList.add('show');
         return;
@@ -1324,23 +1316,17 @@
       }
 
       btnSubmit.disabled = true;
-      btnSubmit.textContent = 'Enviando…';
+      btnSubmit.textContent = 'Abrindo agendamento…';
 
-      const { error } = await sb.from('demo_requests').insert([
-        { nome, numero, email, trabalho, onde_conheceu }
-      ]);
+      // Abre o calendar ANTES do await — evita bloqueio de popup do browser
+      window.open(CALENDAR_URL, '_blank', 'noopener');
 
-      if (error) {
-        formErr.textContent = 'Erro ao enviar. Tente novamente.';
-        formErr.classList.add('show');
-        btnSubmit.disabled = false;
-        btnSubmit.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Confirmar agendamento`;
-        return;
-      }
+      await sb.from('demo_requests').insert([{ nome, numero, email, trabalho, onde_conheceu }]).catch(() => {});
 
-      formWrap.style.display = 'none';
-      formSuc.classList.add('show');
-      setTimeout(closeModal, 3500);
+      closeModal();
+      btnSubmit.disabled = false;
+      btnSubmit.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Agendar Demo`;
+      ['f-nome','f-numero','f-email','f-trabalho','f-onde'].forEach(id => { document.getElementById(id).value = ''; });
     });
 
     // Hero 3D Mouse Parallax
