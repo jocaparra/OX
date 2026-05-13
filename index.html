@@ -309,6 +309,63 @@
     }
 
     /* ═══════════════════════════════════════════════════
+       LOGO TICKER
+    ═══════════════════════════════════════════════════ */
+    #logo-ticker {
+      background: white;
+      border-top: 1px solid var(--l200);
+      border-bottom: 1px solid var(--l200);
+      padding: 28px 0;
+      overflow: hidden;
+    }
+    .ticker-label {
+      text-align: center;
+      font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+      color: #94a3b8; margin-bottom: 20px;
+    }
+    .ticker-track-wrap {
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    }
+    .ticker-track {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      width: max-content;
+      animation: ticker-scroll 28s linear infinite;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 40px;
+      flex-shrink: 0;
+      height: 44px;
+    }
+    .ticker-item img {
+      height: 28px;
+      width: auto;
+      max-width: 130px;
+      object-fit: contain;
+      filter: opacity(0.85);
+      transition: filter .3s ease;
+    }
+    .ticker-item img:hover { filter: opacity(1); }
+    .ticker-item img[src*="Logo-B3"],
+    .ticker-item img[src*="images.png"] { height: 44px; }
+    .ticker-divider {
+      width: 1px; height: 20px;
+      background: var(--l200);
+      flex-shrink: 0;
+    }
+    @keyframes ticker-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ═══════════════════════════════════════════════════
        FEATURES — light
     ═══════════════════════════════════════════════════ */
     #features { background: var(--l50); padding: 100px 0; }
@@ -840,6 +897,68 @@
 
           </div>
         </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── LOGO TICKER ─────────────────────────────────────────────── -->
+  <section id="logo-ticker">
+    <p class="ticker-label">Dados integrados de fontes que os melhores deals já usam</p>
+    <div class="ticker-track-wrap">
+      <div class="ticker-track">
+
+        <!-- set 1 -->
+        <div class="ticker-item"><img src="TICKERS/receita-federal-logo.png" alt="Receita Federal"></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item"><img src="TICKERS/twitter-x-logo-png_seeklogo-492397.png" alt="X"></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item"><img src="TICKERS/LinkedIn_2021.svg.png" alt="LinkedIn"></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item"><img src="TICKERS/Crunchbase_wordmark_dark_blue.svg.png" alt="Crunchbase"></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item"><img src="TICKERS/images.png" alt="TrustMRR"></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item"><img src="TICKERS/Logo-B3-positivo.png" alt="B3"></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item"><img src="TICKERS/NYSE_Logo_2022.svg.png" alt="NYSE"></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item"><img src="TICKERS/NASDAQ_Logo.svg.png" alt="Nasdaq"></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item"><img src="TICKERS/Salesforce.com_logo.svg.png" alt="Salesforce"></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item"><img src="TICKERS/Gov.br_logo.svg.webp" alt="gov.br"></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item"><img src="TICKERS/shopify-logo-png-transparent.png" alt="Shopify"></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item"><img src="TICKERS/Stripe_Logo,_revised_2016.svg.png" alt="Stripe"></div>
+        <div class="ticker-divider"></div>
+
+        <!-- set 2 — duplicate para loop contínuo -->
+        <div class="ticker-item"><img src="TICKERS/receita-federal-logo.png" alt="Receita Federal"></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item"><img src="TICKERS/twitter-x-logo-png_seeklogo-492397.png" alt="X"></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item"><img src="TICKERS/LinkedIn_2021.svg.png" alt="LinkedIn"></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item"><img src="TICKERS/Crunchbase_wordmark_dark_blue.svg.png" alt="Crunchbase"></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item"><img src="TICKERS/images.png" alt="TrustMRR"></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item"><img src="TICKERS/Logo-B3-positivo.png" alt="B3"></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item"><img src="TICKERS/NYSE_Logo_2022.svg.png" alt="NYSE"></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item"><img src="TICKERS/NASDAQ_Logo.svg.png" alt="Nasdaq"></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item"><img src="TICKERS/Salesforce.com_logo.svg.png" alt="Salesforce"></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item"><img src="TICKERS/Gov.br_logo.svg.webp" alt="gov.br"></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item"><img src="TICKERS/shopify-logo-png-transparent.png" alt="Shopify"></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item"><img src="TICKERS/Stripe_Logo,_revised_2016.svg.png" alt="Stripe"></div>
+        <div class="ticker-divider"></div>
 
       </div>
     </div>
