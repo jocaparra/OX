@@ -734,63 +734,6 @@
     @keyframes dot-flash { 0%, 80%, 100% { opacity: 0; transform: scale(0.5); } 90% { opacity: 1; transform: scale(1.2); } }
 
   
-    /* ═══════════════════════════════════════════════════
-       CINEMATIC INTRO
-    ═══════════════════════════════════════════════════ */
-    #cinematic { position: relative; }
-    .cin-pin {
-      position: sticky; top: 0;
-      height: 100vh; width: 100%;
-      overflow: hidden; background: #000;
-    }
-    .cin-layer { position: absolute; inset: 0; }
-    .cin-layer img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center;
-      transform-origin: 55% 55%;
-      will-change: transform; display: block;
-    }
-    .cin-int { opacity: 0; will-change: opacity; }
-    .cin-int img { transform-origin: 48% 58%; }
-    .cin-amber {
-      position: absolute; inset: 0; z-index: 2; pointer-events: none;
-      background:
-        linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.6) 100%),
-        radial-gradient(ellipse 75% 50% at 65% 55%, rgba(180,100,20,0.14) 0%, transparent 70%);
-    }
-    .cin-grain {
-      position: absolute; inset: -25%; width: 150%; height: 150%;
-      z-index: 3; pointer-events: none; opacity: .055;
-      filter: url(#cin-grain-filter); background: white;
-      animation: cin-grain-shift .35s steps(1) infinite;
-    }
-    @keyframes cin-grain-shift {
-      0%  { transform: translate(0,0); }
-      14% { transform: translate(-3%,-2%); }
-      28% { transform: translate(2%,3%); }
-      42% { transform: translate(-4%,1%); }
-      57% { transform: translate(3%,-3%); }
-      71% { transform: translate(-2%,4%); }
-      85% { transform: translate(4%,-1%); }
-    }
-    .cin-bar { position: absolute; left: 0; right: 0; z-index: 6; background: #000; }
-    .cin-bar-t { top: 0; height: 8vh; }
-    .cin-bar-b { bottom: 0; height: 8vh; }
-    .cin-vignette-b {
-      position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
-      z-index: 5; pointer-events: none; opacity: 0; will-change: opacity;
-      background: linear-gradient(to bottom, transparent, #fff);
-    }
-    .cin-caption {
-      position: absolute; bottom: 13%; left: 50%; transform: translateX(-50%);
-      z-index: 7; pointer-events: none;
-      font-family: 'Inter', sans-serif; font-size: .78rem; font-weight: 400;
-      letter-spacing: .32em; text-transform: uppercase;
-      color: rgba(255,255,255,.6); white-space: nowrap;
-      opacity: 0; transition: opacity 1.4s ease;
-    }
-    .cin-caption.vis { opacity: 1; }
-
     /* --- FEATURE GLOW --- */
     .feat-card { position: relative; overflow: hidden; }
     .feat-card::before {
@@ -816,6 +759,7 @@
     <a href="#features">Funcionalidades</a>
     <a href="#usecases">Casos de Uso</a>
     <a href="#security">Segurança</a>
+    <a href="eva.html">Eva</a>
     <a href="#" class="mcta open-demo">Agendar Demo</a>
   </nav>
 
@@ -829,6 +773,7 @@
         <li><a href="#features">Funcionalidades</a></li>
         <li><a href="#usecases">Casos de Uso</a></li>
         <li><a href="#security">Segurança</a></li>
+        <li><a href="eva.html">Eva</a></li>
       </ul>
       <div class="nav-actions">
         <a href="#cta-final" class="nav-login">Entrar</a>
@@ -839,34 +784,6 @@
       </button>
     </div>
   </header>
-
-  <!-- SVG grain filter -->
-  <svg width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true">
-    <defs>
-      <filter id="cin-grain-filter" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
-        <feTurbulence type="fractalNoise" baseFrequency="0.74 0.74" numOctaves="4" stitchTiles="stitch" result="noise"/>
-        <feColorMatrix type="saturate" values="0" in="noise"/>
-      </filter>
-    </defs>
-  </svg>
-
-  <!-- ─── CINEMATIC INTRO ─────────────────────────────────────────── -->
-  <section id="cinematic" style="height:320vh;">
-    <div class="cin-pin" id="cinPin">
-      <div class="cin-layer cin-ext">
-        <img src="cin-exterior.jpg" alt="" aria-hidden="true" id="cinExtImg" />
-      </div>
-      <div class="cin-layer cin-int" id="cinInt">
-        <img src="cin-interior.jpg" alt="" aria-hidden="true" id="cinIntImg" />
-      </div>
-      <div class="cin-amber" aria-hidden="true"></div>
-      <div class="cin-grain" aria-hidden="true"></div>
-      <div class="cin-bar cin-bar-t" aria-hidden="true"></div>
-      <div class="cin-bar cin-bar-b" aria-hidden="true"></div>
-      <div class="cin-vignette-b" id="cinVignette" aria-hidden="true"></div>
-      <p class="cin-caption" id="cinCaption">O trabalho de M&amp;A não para.</p>
-    </div>
-  </section>
 
   <!-- ─── HERO ──────────────────────────────────────────────────── -->
   <section id="hero">
@@ -1392,6 +1309,7 @@
             <li><a href="#features">Funcionalidades</a></li>
             <li><a href="#usecases">Casos de Uso</a></li>
             <li><a href="#security">Segurança</a></li>
+            <li><a href="eva.html">Eva</a></li>
             <li><a href="#cta-final">Demo</a></li>
           </ul>
         </div>
@@ -1549,55 +1467,6 @@
         mockupWrap.style.transition = 'transform 0.1s ease-out';
       });
     }
-
-
-    // ── Cinematic scroll intro ─────────────────────────────────────
-    (function(){
-      const section  = document.getElementById('cinematic');
-      if (!section) return;
-      const extImg   = document.getElementById('cinExtImg');
-      const intLayer = document.getElementById('cinInt');
-      const intImg   = document.getElementById('cinIntImg');
-      const vignette = document.getElementById('cinVignette');
-      const caption  = document.getElementById('cinCaption');
-
-      let ticking = false;
-      function onScroll() { if (!ticking) { requestAnimationFrame(update); ticking = true; } }
-
-      function easeOut3(t) { return 1 - Math.pow(1 - t, 3); }
-      function easeOut2(t) { return 1 - Math.pow(1 - t, 2); }
-      function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
-      function phase(p, start, end) { return clamp((p - start) / (end - start), 0, 1); }
-
-      function update() {
-        ticking = false;
-        const rect   = section.getBoundingClientRect();
-        const totalH = section.offsetHeight - window.innerHeight;
-        const p      = clamp(-rect.top / totalH, 0, 1);
-
-        // Camera push into building exterior
-        const p1 = easeOut3(phase(p, 0, 0.58));
-        extImg.style.transform = `scale(${1 + p1 * 0.42})`;
-
-        // Dissolve to interior
-        const p2 = phase(p, 0.36, 0.64);
-        intLayer.style.opacity = p2;
-
-        // Push forward toward desk
-        const p3 = easeOut2(phase(p, 0.52, 1));
-        intImg.style.transform = `scale(${1 + p3 * 0.3}) translateY(${p3 * -3}%)`;
-
-        // Caption
-        if (p > 0.1 && p < 0.84) caption.classList.add('vis');
-        else caption.classList.remove('vis');
-
-        // Fade to white hero
-        vignette.style.opacity = phase(p, 0.74, 1);
-      }
-
-      window.addEventListener('scroll', onScroll, { passive: true });
-      update();
-    })();
 
   </script>
 </body>
