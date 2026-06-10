@@ -200,7 +200,30 @@
       color: #64748B;
       max-width: 500px;
       line-height: 1.65;
+      margin-bottom: 36px;
+    }
+
+    .backed-by {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 56px;
       margin-bottom: 40px;
+    }
+
+    .backed-by-label {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #0F172A;
+      white-space: nowrap;
+    }
+
+    .backed-by-logo {
+      height: 68px;
+      width: auto;
+      display: block;
     }
 
     .hero-cta {
@@ -209,7 +232,7 @@
       justify-content: center;
       gap: 28px;
       flex-wrap: wrap;
-      margin-bottom: 64px;
+      margin-bottom: 56px;
     }
 
     .hero-cta .btn-primary {
@@ -225,38 +248,6 @@
       border-radius: 12px;
       display: block;
       image-rendering: auto;
-    }
-
-    /* ── Backed By ── */
-    .backed-by {
-      background: #F0F0F0;
-      border-top: 1px solid #E2E8F0;
-      border-bottom: 1px solid #E2E8F0;
-      padding: 44px 32px;
-    }
-
-    .backed-by-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 56px;
-    }
-
-    .backed-by-label {
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #0F172A;
-      white-space: nowrap;
-    }
-
-    .backed-by-logo {
-      height: 52px;
-      width: auto;
-      display: block;
     }
 
     /* ── Metrics ── */
@@ -681,8 +672,9 @@
         border-radius: 8px;
       }
 
-      .backed-by-inner {
+      .backed-by {
         gap: 32px;
+        margin-bottom: 32px;
       }
 
       .backed-by-label {
@@ -690,7 +682,7 @@
       }
 
       .backed-by-logo {
-        height: 40px;
+        height: 52px;
       }
 
       .metrics-grid {
@@ -763,19 +755,15 @@
     <span class="hero-pill">The Operating System for Modern Businesses</span>
     <h1>Building Intelligence<br>for the Real Economy.</h1>
     <p class="hero-sub">EVA executa processos completos de análise, documentação e decisão, sem supervisão constante. Do primeiro dado ao entregável institucional.</p>
+    <div class="backed-by">
+      <span class="backed-by-label">Backed by:</span>
+      <img src="assets/nvidia-logo.png" alt="NVIDIA" class="backed-by-logo" width="785" height="162" loading="lazy" decoding="async" />
+    </div>
     <div class="hero-cta">
       <a href="https://api.whatsapp.com/send?phone=5519999560806&text=Ol%C3%A1%2C%20tenho%20interesse%20ao%20acesso%20antecipado%20da%20EVA." class="btn-primary" target="_blank" rel="noopener noreferrer">Agendar Demo</a>
       <a href="#how" class="btn-ghost">Ver como funciona →</a>
     </div>
     <img src="assets/hero-product.png" alt="Interface da EVA gerando um valuation da Apple" class="hero-visual" width="5760" height="3240" loading="eager" decoding="async" />
-  </section>
-
-  <!-- ── BACKED BY ── -->
-  <section class="backed-by">
-    <div class="backed-by-inner">
-      <span class="backed-by-label">Backed by:</span>
-      <img src="assets/nvidia-inception.png" alt="NVIDIA Inception Program" class="backed-by-logo" width="636" height="280" loading="lazy" decoding="async" />
-    </div>
   </section>
 
   <!-- ── 3. METRICS BAR ── -->
