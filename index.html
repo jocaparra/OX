@@ -222,14 +222,27 @@
       white-space: nowrap;
     }
 
+    .backed-by-logos {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
     .backed-by-logo {
       display: block;
       height: 72px;
       width: auto;
-      aspect-ratio: 512 / 278;
       object-fit: contain;
       object-position: center;
       image-rendering: auto;
+    }
+
+    .backed-by-logo--nvidia {
+      aspect-ratio: 512 / 278;
+    }
+
+    .backed-by-logo--aws {
+      aspect-ratio: 951 / 475;
     }
 
     .hero-cta {
@@ -678,9 +691,8 @@
         border-radius: 8px;
       }
 
-      .backed-by {
-        gap: 36px;
-        margin-bottom: 36px;
+      .backed-by-logos {
+        gap: 28px;
       }
 
       .backed-by-label {
@@ -763,7 +775,10 @@
     <p class="hero-sub">EVA executa processos completos de análise, documentação e decisão, sem supervisão constante. Do primeiro dado ao entregável institucional.</p>
     <div class="backed-by">
       <span class="backed-by-label">Backed by:</span>
-      <img src="assets/nvidia-logo.png" alt="NVIDIA" class="backed-by-logo" width="512" height="278" loading="lazy" decoding="async" />
+      <div class="backed-by-logos">
+        <img src="assets/nvidia-logo.png" alt="NVIDIA" class="backed-by-logo backed-by-logo--nvidia" width="512" height="278" loading="lazy" decoding="async" />
+        <img src="assets/aws-startups-logo.png" alt="AWS Startups" class="backed-by-logo backed-by-logo--aws" width="951" height="475" loading="lazy" decoding="async" />
+      </div>
     </div>
     <div class="hero-cta">
       <a href="https://api.whatsapp.com/send?phone=5519999560806&text=Ol%C3%A1%2C%20tenho%20interesse%20ao%20acesso%20antecipado%20da%20EVA." class="btn-primary" target="_blank" rel="noopener noreferrer">Agendar Demo</a>
