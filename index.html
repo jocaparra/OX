@@ -927,16 +927,12 @@
     .problem-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      background: #E2E8F0;
-      gap: 1px;
-      border: 1px solid #E2E8F0;
-      border-radius: 8px;
-      overflow: hidden;
+      gap: 24px;
     }
 
     .problem-card {
       background: #FFFFFF;
-      padding: 40px 32px;
+      padding: 32px;
     }
 
     .card-number {
@@ -973,21 +969,13 @@
     .platform-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      background: #E2E8F0;
-      gap: 1px;
-      border: 1px solid #E2E8F0;
-      border-radius: 8px;
-      overflow: hidden;
+      gap: 24px;
     }
 
     .feature-card {
       background: #FFFFFF;
-      padding: 48px 40px;
+      padding: 32px;
       transition: background 0.2s;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 420px;
     }
 
     .feature-card:hover {
@@ -1012,13 +1000,13 @@
     .integrations-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
+      gap: 12px;
       margin: 28px 0;
     }
     .integration-box {
       background: #F8FAFC;
       border: 1px solid #E2E8F0;
-      border-radius: 8px;
+      border-radius: 4px;
       height: 58px;
       display: flex;
       align-items: center;
@@ -1026,12 +1014,11 @@
       padding: 8px;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .integration-box img {
+    .integration-box img,
+    .integration-box svg {
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
-      filter: grayscale(100%);
-      opacity: 0.5;
       transition: all 0.3s;
     }
     .integration-box:hover {
@@ -1040,120 +1027,145 @@
       transform: translateY(-4px);
       box-shadow: 0 8px 16px rgba(15, 23, 42, 0.04);
     }
-    .integration-box:hover img {
-      filter: grayscale(0%);
-      opacity: 1;
-    }
 
     /* Card 2: Prompt Library */
-    .prompts-container {
+    .prompts-tree {
+      position: relative;
+      margin: 20px 0 20px 10px;
+      padding-left: 20px;
+      border-left: 1px dashed #CBD5E1;
       display: flex;
       flex-direction: column;
       gap: 8px;
-      margin: 24px 0;
-      position: relative;
-      max-height: 165px;
-      overflow: hidden;
     }
-    .prompt-item {
+    .prompt-box {
       background: #F8FAFC;
       border: 1px solid #E2E8F0;
-      border-radius: 6px;
-      padding: 8px 12px;
-      font-size: 11.5px;
+      border-radius: 4px;
+      padding: 7px 12px;
+      font-size: 11px;
       font-weight: 500;
       color: #475569;
       display: flex;
       align-items: center;
       gap: 8px;
-      white-space: nowrap;
-      transition: all 0.2s;
+      width: fit-content;
+      position: relative;
+      transition: all 0.2s ease;
     }
-    .prompt-item:hover {
+    .prompt-box::before {
+      content: '';
+      position: absolute;
+      left: -20px;
+      top: 50%;
+      width: 20px;
+      height: 1px;
+      border-top: 1px dashed #CBD5E1;
+    }
+    .prompt-box:hover {
       background: #FFFFFF;
       border-color: #0F172A;
-      color: #0F172A;
-      transform: translateX(4px);
+      color: #0f172a;
+      transform: translateX(3px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
       cursor: pointer;
+    }
+    .prompt-box svg {
+      width: 11px;
+      height: 11px;
+      color: #94A3B8;
+      transition: color 0.2s;
+      flex-shrink: 0;
+    }
+    .prompt-box:hover svg {
+      color: #0F172A;
     }
 
     /* Card 3: Guided Implementation */
-    .onboarding-container {
+    .guided-visual {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 16px;
-      margin: 32px 0;
+      margin: 24px 0;
     }
-    .avatars-group {
+    .avatars-overlap {
       display: flex;
       justify-content: center;
       position: relative;
-      height: 48px;
-      width: 110px;
+      height: 56px;
+      width: 130px;
     }
-    .avatar-circle {
-      width: 48px;
-      height: 48px;
+    .avatar-item {
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
-      border: 3px solid #FFFFFF;
+      border: 3.5px solid #FFFFFF;
       display: flex;
       align-items: center;
       justify-content: center;
       position: absolute;
-      transition: all 0.3s;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.04);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 8px rgba(15, 23, 42, 0.04);
+      overflow: hidden;
     }
-    .avatar-circle svg {
-      width: 18px;
-      height: 18px;
+    .avatar-item svg {
+      width: 20px;
+      height: 20px;
+      color: #64748B;
     }
-    .avatar-circle:nth-child(1) { left: 0; z-index: 1; }
-    .avatar-circle:nth-child(2) { left: 28px; z-index: 2; }
-    .avatar-circle:nth-child(3) { left: 56px; z-index: 3; }
+    .avatar-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .avatar-item:nth-child(1) { left: 0; z-index: 1; }
+    .avatar-item:nth-child(2) { left: 36px; z-index: 2; }
+    .avatar-item:nth-child(3) { left: 72px; z-index: 3; }
 
-    .avatars-group:hover .avatar-circle:nth-child(1) { transform: translateX(-8px); }
-    .avatars-group:hover .avatar-circle:nth-child(3) { transform: translateX(8px); }
+    .avatars-overlap:hover .avatar-item:nth-child(1) { transform: translateX(-10px); }
+    .avatars-overlap:hover .avatar-item:nth-child(3) { transform: translateX(10px); }
 
-    .status-pulse-group {
+    .guided-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #F0FDF4;
-      border: 1px solid #DCFCE7;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
       border-radius: 100px;
-      padding: 5px 12px;
+      padding: 6px 14px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
     }
-    .pulse-indicator {
+    .pulse-dot {
       width: 6px;
       height: 6px;
       background: #10B981;
       border-radius: 50%;
       position: relative;
     }
-    .pulse-indicator::after {
+    .pulse-dot::after {
       content: '';
       position: absolute;
       width: 100%;
       height: 100%;
       background: #10B981;
       border-radius: 50%;
-      animation: pulseGlow 1.5s ease-out infinite;
+      animation: pulseAnimation 2s ease-out infinite;
     }
-    @keyframes pulseGlow {
+    @keyframes pulseAnimation {
       0% { transform: scale(1); opacity: 1; }
-      100% { transform: scale(2.5); opacity: 0; }
+      100% { transform: scale(2.8); opacity: 0; }
     }
-    .status-text {
-      font-size: 10px;
+    .guided-badge-text {
+      font-size: 9.5px;
       font-weight: 700;
-      color: #166534;
+      color: #475569;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
     }
 
     /* Card 4: Custom-Trained Models */
-    .nodes-container {
+    .cascade-container {
       height: 160px;
       display: flex;
       align-items: center;
@@ -1161,140 +1173,213 @@
       margin: 16px 0;
       position: relative;
     }
-    .node-net {
+    .cascade-flow {
       position: relative;
       width: 220px;
-      height: 140px;
+      height: 120px;
     }
-    .center-node {
+    .cascade-box {
       position: absolute;
+      border: 1px solid #E2E8F0;
+      background: transparent;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+    .cascade-box.small {
+      width: 32px;
+      height: 20px;
+    }
+    .cascade-box.medium {
+      width: 44px;
+      height: 24px;
+      background: #F8FAFC;
+    }
+    .cascade-box.target {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 44px;
-      height: 44px;
+      width: 52px;
+      height: 36px;
       background: #0F172A;
-      border: 2px solid #0F172A;
-      border-radius: 10px;
+      border-color: #0F172A;
+      border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 10;
-      box-shadow: 0 0 15px rgba(15, 23, 42, 0.15);
-      transition: all 0.3s;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
     }
-    .logo-node {
+    .cascade-logo {
       color: #FFFFFF;
       font-weight: 700;
       font-size: 16px;
     }
-    .feature-card:hover .center-node {
-      border-color: #0F172A;
-      box-shadow: 0 0 20px rgba(15, 23, 42, 0.25);
-    }
-    .sub-node {
+    .cascade-line-fine {
       position: absolute;
-      width: 10px;
-      height: 10px;
       background: #E2E8F0;
-      border: 2px solid #94A3B8;
-      border-radius: 50%;
-      z-index: 5;
-      transition: all 0.3s;
-    }
-    .feature-card:hover .sub-node {
-      background: #0F172A;
-      border-color: #FFFFFF;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-    }
-    .connector-line {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: var(--w);
-      height: 1px;
-      background: linear-gradient(90deg, #E2E8F0, rgba(226, 232, 240, 0));
-      transform-origin: left center;
-      transform: rotate(var(--angle));
       z-index: 1;
+      transition: all 0.3s ease;
     }
-    .feature-card:hover .connector-line {
-      background: linear-gradient(90deg, #94A3B8, rgba(148, 163, 184, 0.1));
+    .feature-card:hover .cascade-box:not(.target) {
+      border-color: #CBD5E1;
+      background: #F1F5F9;
+    }
+    .feature-card:hover .cascade-box.target {
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.2);
+    }
+    .feature-card:hover .cascade-line-fine {
+      background: #94A3B8;
+      stroke: #94A3B8;
     }
 
     /* Card 5: Governance & Permissions */
-    .gov-dashboard {
+    .panel-gov {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 4px;
+      padding: 16px;
+      margin: 16px 0;
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.02);
+    }
+    .gov-stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .gov-stat-card {
       background: #F8FAFC;
       border: 1px solid #E2E8F0;
-      border-radius: 8px;
-      padding: 14px;
-      margin: 20px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+      border-radius: 4px;
+      padding: 8px 10px;
+      text-align: left;
     }
-    .gov-row {
+    .gov-stat-label {
+      font-size: 9px;
+      font-weight: 600;
+      color: #94A3B8;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .gov-stat-val {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0F172A;
+      margin-top: 2px;
       display: flex;
-      flex-direction: column;
+      align-items: center;
       gap: 4px;
     }
-    .gov-label {
-      font-size: 10.5px;
+    .gov-stat-delta {
+      font-size: 9px;
+      font-weight: 600;
+      color: #10B981;
+    }
+    .gov-list-sources {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .gov-source-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .gov-source-name {
+      font-size: 10px;
       font-weight: 600;
       color: #475569;
+      width: 85px;
+      white-space: nowrap;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    .gov-bar-container {
-      width: 100%;
-      height: 5px;
+    .gov-icon {
+      width: 11px;
+      height: 11px;
+      color: #64748B;
+      flex-shrink: 0;
+    }
+    .gov-source-bar-bg {
+      flex: 1;
+      height: 4px;
       background: #E2E8F0;
-      border-radius: 100px;
+      border-radius: 10px;
       overflow: hidden;
+      position: relative;
     }
-    .gov-bar {
+    .gov-source-bar-fill {
       height: 100%;
-      background: #94A3B8;
-      border-radius: 100px;
-      transition: all 1s ease-in-out;
+      background: #64748B;
+      border-radius: 10px;
+      transition: all 0.3s ease;
     }
-    .feature-card:hover .gov-bar {
+    .feature-card:hover .gov-source-bar-fill {
       background: #0F172A;
     }
 
     /* Card 6: Single Tenant */
-    .server-container {
-      height: 140px;
+    .infra-diagram-container {
+      height: 160px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 20px 0;
-    }
-    .server-node {
+      margin: 16px 0;
       position: relative;
-      color: #64748B;
-      transition: all 0.3s;
     }
-    .server-node svg {
-      width: 64px;
-      height: 64px;
+    .infra-grid-net {
+      position: relative;
+      width: 180px;
+      height: 100px;
     }
-    .server-glow {
+    .infra-grid-box {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 74px;
-      height: 74px;
-      background: rgba(15, 23, 42, 0);
+      width: 26px;
+      height: 26px;
+      border: 1px solid #E2E8F0;
+      background: #F8FAFC;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    .infra-grid-box.hub {
+      width: 32px;
+      height: 32px;
+      background: #0F172A;
+      border-color: #0F172A;
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.1);
+      z-index: 5;
+    }
+    .infra-grid-box.hub svg {
+      width: 14px;
+      height: 14px;
+      color: #FFFFFF;
+    }
+    .infra-dot-active {
+      width: 6px;
+      height: 6px;
+      background: #10B981;
       border-radius: 50%;
-      z-index: -1;
-      transition: all 0.3s;
+      box-shadow: 0 0 8px #10B981;
     }
-    .feature-card:hover .server-node {
-      color: #0F172A;
+    .infra-link-line {
+      position: absolute;
+      background: #E2E8F0;
+      z-index: 1;
+      transition: all 0.3s ease;
     }
-    .feature-card:hover .server-glow {
-      background: rgba(15, 23, 42, 0.03);
-      box-shadow: 0 0 24px rgba(15, 23, 42, 0.1);
+    .feature-card:hover .infra-grid-box:not(.hub) {
+      border-color: #CBD5E1;
+      background: #F1F5F9;
+    }
+    .feature-card:hover .infra-link-line {
+      background: #94A3B8;
+      stroke: #94A3B8;
     }
 
 
@@ -1349,16 +1434,12 @@
     .whom-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      background: #E2E8F0;
-      gap: 1px;
-      border: 1px solid #E2E8F0;
-      border-radius: 8px;
-      overflow: hidden;
+      gap: 24px;
     }
 
     .whom-card {
       background: #FFFFFF;
-      padding: 48px 40px;
+      padding: 32px;
     }
 
     .whom-role {
@@ -1569,7 +1650,13 @@
       overflow: hidden;
       transition: var(--transition-base);
       border: 1px solid var(--border-light);
+      border-radius: 6px;
       z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 340px;
+      box-sizing: border-box;
     }
     
     .problem-card > *, .feature-card > *, .whom-card > * {
@@ -1848,18 +1935,24 @@
       <div class="problem-grid">
         <div class="problem-card reveal-scale delay-100">
           <div class="card-number">01</div>
-          <h3 class="card-title">Trabalho operacional consome tempo estratégico</h3>
-          <p class="card-desc">Analistas e sêniors gastam mais de 30% do tempo em apresentações, trackers e pesquisas manuais. Tempo que deveria estar em análise e relacionamento.</p>
+          <div>
+            <h3 class="card-title">Trabalho operacional consome tempo estratégico</h3>
+            <p class="card-desc">Analistas e sêniors gastam mais de 30% do tempo em apresentações, trackers e pesquisas manuais. Tempo que deveria estar em análise e relacionamento.</p>
+          </div>
         </div>
         <div class="problem-card reveal-scale delay-200">
           <div class="card-number">02</div>
-          <h3 class="card-title">Escalar exige contratar, e contratar é lento e caro</h3>
-          <p class="card-desc">Para aumentar volume, a única opção é aumentar headcount. O custo cresce junto com a operação, e a qualidade varia conforme quem executa.</p>
+          <div>
+            <h3 class="card-title">Escalar exige contratar, e contratar é lento e caro</h3>
+            <p class="card-desc">Para aumentar volume, a única opção é aumentar headcount. O custo cresce junto com a operação, e a qualidade varia conforme quem executa.</p>
+          </div>
         </div>
         <div class="problem-card reveal-scale delay-300">
           <div class="card-number">03</div>
-          <h3 class="card-title">IA genérica não entende o seu contexto</h3>
-          <p class="card-desc">ChatGPT e ferramentas genéricas geram rascunhos que precisam ser refeitos. Não leem um data room, não conhecem o padrão institucional do seu deal nem a realidade fiscal e regulatória brasileira.</p>
+          <div>
+            <h3 class="card-title">IA genérica não entende o seu contexto</h3>
+            <p class="card-desc">ChatGPT e ferramentas genéricas geram rascunhos que precisam ser refeitos. Não leem um data room, não conhecem o padrão institucional do seu deal nem a realidade fiscal e regulatória brasileira.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1880,26 +1973,83 @@
           <div>
             <h3 class="card-title">Integrações</h3>
             <div class="integrations-grid">
-              <div class="integration-box" title="B3"><img src="assets/Logo-B3-positivo.png" alt="B3"></div>
-              <div class="integration-box" title="NYSE"><img src="assets/NYSE_Logo_2022.svg.png" alt="NYSE"></div>
-              <div class="integration-box" title="NASDAQ"><img src="assets/NASDAQ_Logo.svg.png" alt="NASDAQ"></div>
-              <div class="integration-box" title="Stripe"><img src="assets/Stripe_Logo,_revised_2016.svg.png" alt="Stripe"></div>
-              <div class="integration-box" title="Salesforce"><img src="assets/Salesforce.com_logo.svg.png" alt="Salesforce"></div>
-              <div class="integration-box" title="Shopify"><img src="assets/shopify-logo-png-transparent.png" alt="Shopify"></div>
+              <!-- Microsoft Word -->
+              <div class="integration-box" title="Microsoft Word">
+                <svg viewBox="0 0 24 24" style="width: 28px; height: 28px;">
+                  <rect x="7" y="3.5" width="14" height="17" rx="1.5" fill="#185ABD" />
+                  <rect x="10" y="7" width="8" height="1.5" fill="#FFFFFF" opacity="0.6" />
+                  <rect x="10" y="10" width="8" height="1.5" fill="#FFFFFF" opacity="0.6" />
+                  <rect x="10" y="13" width="5" height="1.5" fill="#FFFFFF" opacity="0.6" />
+                  <rect x="3" y="6" width="11" height="12" rx="1.5" fill="#103F91" />
+                  <text x="5.5" y="15" fill="#FFFFFF" font-family="sans-serif" font-weight="900" font-size="10">W</text>
+                </svg>
+              </div>
+              <!-- Microsoft Excel -->
+              <div class="integration-box" title="Microsoft Excel">
+                <svg viewBox="0 0 24 24" style="width: 28px; height: 28px;">
+                  <rect x="7" y="3.5" width="14" height="17" rx="1.5" fill="#107C41" />
+                  <rect x="10" y="7" width="8" height="1.5" fill="#FFFFFF" opacity="0.6" />
+                  <rect x="10" y="10" width="8" height="1.5" fill="#FFFFFF" opacity="0.6" />
+                  <rect x="10" y="13" width="8" height="1.5" fill="#FFFFFF" opacity="0.6" />
+                  <rect x="13" y="7" width="1.5" height="7.5" fill="#FFFFFF" opacity="0.6" />
+                  <rect x="3" y="6" width="11" height="12" rx="1.5" fill="#0A5C36" />
+                  <text x="6" y="15" fill="#FFFFFF" font-family="sans-serif" font-weight="900" font-size="10">X</text>
+                </svg>
+              </div>
+              <!-- Microsoft PowerPoint -->
+              <div class="integration-box" title="Microsoft PowerPoint">
+                <svg viewBox="0 0 24 24" style="width: 28px; height: 28px;">
+                  <rect x="7" y="3.5" width="14" height="17" rx="1.5" fill="#D24726" />
+                  <circle cx="14" cy="12" r="3.5" fill="#FFFFFF" opacity="0.6" />
+                  <path d="M14 12 L14 8.5 A 3.5 3.5 0 0 1 17.5 12 Z" fill="#FFFFFF" />
+                  <rect x="3" y="6" width="11" height="12" rx="1.5" fill="#B7472A" />
+                  <text x="6" y="15" fill="#FFFFFF" font-family="sans-serif" font-weight="900" font-size="10">P</text>
+                </svg>
+              </div>
+              <!-- Microsoft Teams -->
+              <div class="integration-box" title="Microsoft Teams">
+                <svg viewBox="0 0 24 24" style="width: 28px; height: 28px;">
+                  <circle cx="18" cy="6.5" r="2.5" fill="#7F85F5" />
+                  <path d="M14 13.5a3.5 3.5 0 0 1 7 0v2.5h-7v-2.5z" fill="#5F65E6" />
+                  <circle cx="9" cy="5.5" r="3.5" fill="#7F85F5" />
+                  <path d="M3.5 13a4.5 4.5 0 0 1 9 0v3.5H3.5V13z" fill="#4B53BC" />
+                  <rect x="1" y="9" width="10" height="10" rx="1.5" fill="#3B429F" />
+                  <text x="3.5" y="17.5" fill="#FFFFFF" font-family="sans-serif" font-weight="900" font-size="9">T</text>
+                </svg>
+              </div>
+              <!-- Microsoft SharePoint -->
+              <div class="integration-box" title="Microsoft SharePoint">
+                <svg viewBox="0 0 24 24" style="width: 28px; height: 28px;">
+                  <circle cx="12" cy="7" r="5" fill="#0078D4" />
+                  <circle cx="16" cy="13" r="5" fill="#00B7C3" />
+                  <circle cx="10" cy="16" r="4.5" fill="#038387" />
+                  <rect x="2" y="10" width="10" height="10" rx="1.5" fill="#005A9E" />
+                  <text x="4.5" y="18.5" fill="#FFFFFF" font-family="sans-serif" font-weight="900" font-size="9">S</text>
+                </svg>
+              </div>
+              <!-- SQL/Database (Data) -->
+              <div class="integration-box" title="Database / SQL">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#0078D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px;">
+                  <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                  <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path>
+                </svg>
+              </div>
             </div>
           </div>
-          <p class="card-desc">Conexão nativa com seus provedores e bancos de dados. Interaja diretamente com fontes de dados internas e regulatórias do mercado financeiro e corporativo.</p>
+          <p class="card-desc">Conecte-se de forma simples aos seus provedores e sistemas de arquivos existentes. Melhore seus fluxos de trabalho interagindo com fontes de dados internas e externas.</p>
         </div>
 
         <!-- Card 2: Prompt Library -->
         <div class="feature-card reveal-scale delay-200">
           <div>
             <h3 class="card-title">Biblioteca de Prompts</h3>
-            <div class="prompts-container">
-              <div class="prompt-item" style="animation: floatUp 8s linear infinite;">📊 Analisar múltiplos de mercado do setor</div>
-              <div class="prompt-item" style="animation: floatUp 8s linear infinite; animation-delay: 2s;">🔍 Auditar contrato_social.pdf e SPED</div>
-              <div class="prompt-item" style="animation: floatUp 8s linear infinite; animation-delay: 4s;">📈 Projetar EBITDA para comitê</div>
-              <div class="prompt-item" style="animation: floatUp 8s linear infinite; animation-delay: 6s;">💼 Estruturar CIM para Transação</div>
+            <div class="prompts-tree">
+              <div class="prompt-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Earnings Comp Analysis</div>
+              <div class="prompt-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="16"/><line x1="15" y1="22" x2="15" y2="16"/><line x1="9" y1="16" x2="15" y2="16"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M8 10h.01"/><path d="M16 10h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/></svg> Public Company Strip Profile</div>
+              <div class="prompt-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Meeting Prep</div>
+              <div class="prompt-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Private Company Profile</div>
+              <div class="prompt-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Financial Sponsor Overview</div>
             </div>
           </div>
           <p class="card-desc">Escolha em nossa biblioteca de prompts especializados voltados a automatizar fluxos complexos de M&amp;A e due diligence do início ao fim.</p>
@@ -1909,40 +2059,55 @@
         <div class="feature-card reveal-scale delay-300">
           <div>
             <h3 class="card-title">Implementação Guiada</h3>
-            <div class="onboarding-container">
-              <div class="avatars-group">
-                <div class="avatar-circle" style="background: #E2E8F0; border-color: #E2E8F0;"><svg viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-                <div class="avatar-circle" style="background: #CBD5E1; border-color: #CBD5E1;"><svg viewBox="0 0 24 24" fill="none" stroke="#1E293B" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-                <div class="avatar-circle" style="background: #0F172A; border-color: #10B981;"><svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <div class="guided-visual">
+              <div class="avatars-overlap">
+                <div class="avatar-item" style="background: #E2E8F0;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div class="avatar-item">
+                  <img src="assets/executive_portrait.png" alt="M&A Expert Portrait">
+                </div>
+                <div class="avatar-item" style="background: #0F172A;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
               </div>
-              <div class="status-pulse-group">
-                <span class="pulse-indicator"></span>
-                <span class="status-text">Suporte Dedicado M&amp;A</span>
+              <div class="guided-badge">
+                <span class="pulse-dot"></span>
+                <span class="guided-badge-text">Suporte Dedicado</span>
               </div>
             </div>
           </div>
-          <p class="card-desc">Onboarding e acompanhamento direto com nosso time de ex-bankers e investidores de Private Equity para adaptar a IA aos processos da sua firma.</p>
+          <p class="card-desc">Onboarding e acompanhamento direto com nosso time para adaptar a IA aos processos da sua firma.</p>
         </div>
 
         <!-- Card 4: Custom-Trained Models -->
         <div class="feature-card reveal-scale delay-100">
           <div>
             <h3 class="card-title">Modelos Customizados</h3>
-            <div class="nodes-container">
-              <div class="node-net">
-                <div class="connector-line" style="--angle: 30deg; --w: 70px;"></div>
-                <div class="connector-line" style="--angle: -30deg; --w: 70px;"></div>
-                <div class="connector-line" style="--angle: 90deg; --w: 50px;"></div>
-                <div class="connector-line" style="--angle: 150deg; --w: 70px;"></div>
-                <div class="connector-line" style="--angle: -150deg; --w: 70px;"></div>
+            <div class="cascade-container">
+              <div class="cascade-flow">
+                <!-- SVG Connections -->
+                <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+                  <line x1="42" y1="27" x2="110" y2="60" stroke="#E2E8F0" stroke-width="1" class="cascade-line-fine" />
+                  <line x1="26" y1="60" x2="110" y2="60" stroke="#E2E8F0" stroke-width="1" class="cascade-line-fine" />
+                  <line x1="42" y1="92" x2="110" y2="60" stroke="#E2E8F0" stroke-width="1" class="cascade-line-fine" />
+                  <line x1="178" y1="27" x2="110" y2="60" stroke="#E2E8F0" stroke-width="1" class="cascade-line-fine" />
+                  <line x1="194" y1="60" x2="110" y2="60" stroke="#E2E8F0" stroke-width="1" class="cascade-line-fine" />
+                  <line x1="178" y1="92" x2="110" y2="60" stroke="#E2E8F0" stroke-width="1" class="cascade-line-fine" />
+                </svg>
+
+                <!-- Boxes -->
+                <div class="cascade-box medium" style="top: 15px; left: 20px;"></div>
+                <div class="cascade-box small" style="top: 50px; left: 10px;"></div>
+                <div class="cascade-box medium" style="top: 80px; left: 20px;"></div>
                 
-                <div class="sub-node" style="top: 20px; left: 30px;"></div>
-                <div class="sub-node" style="top: 120px; left: 30px;"></div>
-                <div class="sub-node" style="top: 70px; left: 175px;"></div>
-                
-                <div class="center-node">
-                  <span class="logo-node">E</span>
+                <div class="cascade-box target">
+                  <img src="assets/logo-eva-black.png" alt="EVA Logo" style="width: 24px; height: 24px; filter: brightness(0) invert(1); object-fit: contain;" />
                 </div>
+                
+                <div class="cascade-box medium" style="top: 15px; right: 20px;"></div>
+                <div class="cascade-box small" style="top: 50px; right: 10px;"></div>
+                <div class="cascade-box medium" style="top: 80px; right: 20px;"></div>
               </div>
             </div>
           </div>
@@ -1953,18 +2118,53 @@
         <div class="feature-card reveal-scale delay-200">
           <div>
             <h3 class="card-title">Governança e Permissões</h3>
-            <div class="gov-dashboard">
-              <div class="gov-row">
-                <span class="gov-label">Documentação Confidencial</span>
-                <div class="gov-bar-container"><div class="gov-bar" style="width: 85%;"></div></div>
+            <div class="panel-gov">
+              <div class="gov-stats-grid">
+                <div class="gov-stat-card">
+                  <div class="gov-stat-label">Active Users</div>
+                  <div class="gov-stat-val">122 <span class="gov-stat-delta">+5</span></div>
+                </div>
+                <div class="gov-stat-card">
+                  <div class="gov-stat-label">Queries</div>
+                  <div class="gov-stat-val">3.1k <span class="gov-stat-delta">+235</span></div>
+                </div>
               </div>
-              <div class="gov-row">
-                <span class="gov-label">Dados Fiscais e SPED</span>
-                <div class="gov-bar-container"><div class="gov-bar" style="width: 60%;"></div></div>
-              </div>
-              <div class="gov-row">
-                <span class="gov-label">Modelagem Financeira</span>
-                <div class="gov-bar-container"><div class="gov-bar" style="width: 45%;"></div></div>
+              <div class="gov-list-sources">
+                <div class="gov-source-row">
+                  <span class="gov-source-name">
+                    <svg class="gov-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    Web
+                  </span>
+                  <div class="gov-source-bar-bg"><div class="gov-source-bar-fill" style="width: 85%;"></div></div>
+                </div>
+                <div class="gov-source-row">
+                  <span class="gov-source-name">
+                    <svg class="gov-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    SEC Filings
+                  </span>
+                  <div class="gov-source-bar-bg"><div class="gov-source-bar-fill" style="width: 70%;"></div></div>
+                </div>
+                <div class="gov-source-row">
+                  <span class="gov-source-name">
+                    <svg class="gov-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                    Market Data
+                  </span>
+                  <div class="gov-source-bar-bg"><div class="gov-source-bar-fill" style="width: 60%;"></div></div>
+                </div>
+                <div class="gov-source-row">
+                  <span class="gov-source-name">
+                    <svg class="gov-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                    Transcripts
+                  </span>
+                  <div class="gov-source-bar-bg"><div class="gov-source-bar-fill" style="width: 45%;"></div></div>
+                </div>
+                <div class="gov-source-row">
+                  <span class="gov-source-name">
+                    <svg class="gov-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                    File Library
+                  </span>
+                  <div class="gov-source-bar-bg"><div class="gov-source-bar-fill" style="width: 30%;"></div></div>
+                </div>
               </div>
             </div>
           </div>
@@ -1975,17 +2175,36 @@
         <div class="feature-card reveal-scale delay-300">
           <div>
             <h3 class="card-title">Instância Dedicada</h3>
-            <div class="server-container">
-              <div class="server-node">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <rect x="2" y="2" width="20" height="8" rx="2"/>
-                  <rect x="2" y="14" width="20" height="8" rx="2"/>
-                  <circle cx="6" cy="6" r="1" fill="currentColor"/>
-                  <circle cx="6" cy="18" r="1" fill="currentColor"/>
-                  <line x1="10" y1="6" x2="18" y2="6"/>
-                  <line x1="10" y1="18" x2="18" y2="18"/>
+            <div class="infra-diagram-container">
+              <div class="infra-grid-net">
+                <!-- SVG Connections -->
+                <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+                  <line x1="23" y1="18" x2="90" y2="50" stroke="#E2E8F0" stroke-width="1" class="infra-link-line" />
+                  <line x1="90" y1="18" x2="90" y2="50" stroke="#E2E8F0" stroke-width="1" class="infra-link-line" />
+                  <line x1="157" y1="18" x2="90" y2="50" stroke="#E2E8F0" stroke-width="1" class="infra-link-line" />
+                  <line x1="23" y1="50" x2="90" y2="50" stroke="#E2E8F0" stroke-width="1" class="infra-link-line" />
+                  <line x1="157" y1="50" x2="90" y2="50" stroke="#E2E8F0" stroke-width="1" class="infra-link-line" />
+                  <line x1="23" y1="82" x2="90" y2="50" stroke="#E2E8F0" stroke-width="1" class="infra-link-line" />
+                  <line x1="90" y1="82" x2="90" y2="50" stroke="#E2E8F0" stroke-width="1" class="infra-link-line" />
+                  <line x1="157" y1="82" x2="90" y2="50" stroke="#E2E8F0" stroke-width="1" class="infra-link-line" />
                 </svg>
-                <div class="server-glow"></div>
+
+                <!-- Outer Nodes -->
+                <div class="infra-grid-box" style="top: 5px; left: 10px;"></div>
+                <div class="infra-grid-box" style="top: 5px; left: 77px;"></div>
+                <div class="infra-grid-box" style="top: 5px; left: 144px;"></div>
+                
+                <div class="infra-grid-box" style="top: 37px; left: 10px;"></div>
+                <div class="infra-grid-box hub" style="top: 34px; left: 74px;">
+                  <img src="assets/logo-eva-black.png" alt="EVA Logo" style="width: 16px; height: 16px; filter: brightness(0) invert(1); object-fit: contain;" />
+                </div>
+                <div class="infra-grid-box" style="top: 37px; left: 144px;"></div>
+                
+                <div class="infra-grid-box" style="top: 69px; left: 10px;"></div>
+                <div class="infra-grid-box" style="top: 69px; left: 77px;"></div>
+                <div class="infra-grid-box" style="top: 69px; left: 144px;">
+                  <div class="infra-dot-active"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -2032,27 +2251,31 @@
       </div>
       <div class="whom-grid">
         <div class="whom-card reveal-scale delay-100">
-          <p class="whom-role">Investment Banking · PE · VC · M&amp;A</p>
-          <h3 class="whom-title">Times de Deals</h3>
-          <p class="whom-subtitle">Onde a EVA nasceu. Exigência máxima de qualidade institucional, velocidade e confidencialidade.</p>
-          <ul class="whom-list">
-            <li>→ CIM e Pitch Deck em minutos</li>
-            <li>→ Due diligence em horas</li>
-            <li>→ Análise de comps automatizada</li>
-            <li>→ Instância dedicada</li>
-          </ul>
+          <div>
+            <p class="whom-role">Investment Banking · PE · VC · M&amp;A</p>
+            <h3 class="whom-title">Times de Deals</h3>
+            <p class="whom-subtitle">Onde a EVA nasceu. Exigência máxima de qualidade institucional, velocidade e confidencialidade.</p>
+            <ul class="whom-list">
+              <li>→ CIM e Pitch Deck em minutos</li>
+              <li>→ Due diligence em horas</li>
+              <li>→ Análise de comps automatizada</li>
+              <li>→ Instância dedicada</li>
+            </ul>
+          </div>
           <p class="whom-message">Dobrar sua capacidade de deals sem contratar mais uma pessoa.</p>
         </div>
         <div class="whom-card reveal-scale delay-200">
-          <p class="whom-role">Expansão · Jurídico · Consultoria · Corporativo</p>
-          <h3 class="whom-title">Empresas da Economia Real</h3>
-          <p class="whom-subtitle">Qualquer empresa com alto volume de análise, documentação e processos críticos.</p>
-          <ul class="whom-list">
-            <li>→ Relatórios e análises em minutos</li>
-            <li>→ Documentos board-ready</li>
-            <li>→ Pesquisa avançada em bases internas</li>
-            <li>→ Automação de processos repetitivos</li>
-          </ul>
+          <div>
+            <p class="whom-role">Expansão · Jurídico · Consultoria · Corporativo</p>
+            <h3 class="whom-title">Empresas da Economia Real</h3>
+            <p class="whom-subtitle">Qualquer empresa com alto volume de análise, documentação e processos críticos.</p>
+            <ul class="whom-list">
+              <li>→ Relatórios e análises em minutos</li>
+              <li>→ Documentos board-ready</li>
+              <li>→ Pesquisa avançada em bases internas</li>
+              <li>→ Automação de processos repetitivos</li>
+            </ul>
+          </div>
           <p class="whom-message">Inteligência aplicada ao seu processo, sem a curva de aprendizado de IA genérica.</p>
         </div>
       </div>
