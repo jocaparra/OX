@@ -1907,17 +1907,17 @@
   <!-- ── 3. METRICS BAR ── -->
   <section class="metrics">
     <div class="container">
-      <div class="metrics-grid viewfinder reveal">
+      <div class="metrics-grid viewfinder">
         <div class="viewfinder-inner"></div>
-        <div class="metric-item reveal delay-100">
+        <div class="metric-item">
           <div class="metric-value">2 lados</div>
           <div class="metric-label">Compra e venda, mandatos separados</div>
         </div>
-        <div class="metric-item reveal delay-200">
+        <div class="metric-item">
           <div class="metric-value">Semanas</div>
           <div class="metric-label">Do mandato à contraparte certa, não meses</div>
         </div>
-        <div class="metric-item reveal delay-300">
+        <div class="metric-item">
           <div class="metric-value">IA + banker</div>
           <div class="metric-label">A IA executa, o banker sênior revisa e assina</div>
         </div>
@@ -2216,59 +2216,7 @@
         });
       }, { threshold: 0.15 });
       revealElements.forEach(el => revealObserver.observe(el));
-
-      // ── 2. METRICS COUNT-UP ──
-      const metrics = document.querySelectorAll('.metric-value');
-      const metricsObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const valEl = entry.target;
-            const targetValText = valEl.innerText;
-            const numberVal = parseFloat(targetValText);
-            
-            if (isNaN(numberVal)) {
-              observer.unobserve(valEl);
-              return;
-            }
-            
-            const hasMin = targetValText.includes('min');
-            const hasX = targetValText.includes('×');
-            const hasPercent = targetValText.includes('%');
-            
-            let start = 0;
-            const duration = 1500;
-            const startTime = performance.now();
-            
-            function updateNumber(now) {
-              const elapsed = now - startTime;
-              const progress = Math.min(elapsed / duration, 1);
-              const ease = progress * (2 - progress); // Ease out quad
-              const current = start + ease * (numberVal - start);
-              
-              if (hasX) {
-                valEl.innerText = current.toFixed(1).replace('.0', '') + '×';
-              } else if (hasPercent) {
-                valEl.innerText = Math.round(current) + '%';
-              } else if (hasMin) {
-                valEl.innerText = Math.round(current) + ' min';
-              } else {
-                valEl.innerText = Math.round(current);
-              }
-              
-              if (progress < 1) {
-                requestAnimationFrame(updateNumber);
-              } else {
-                valEl.innerText = targetValText;
-              }
-            }
-            requestAnimationFrame(updateNumber);
-            observer.unobserve(valEl);
-          }
-        });
-      }, { threshold: 0.5 });
-      metrics.forEach(m => metricsObserver.observe(m));
-
-      // ── 3. CARD MOUSE GLOW EFFECT ──
+      // ── 2. CARD MOUSE GLOW EFFECT ──
       const cards = document.querySelectorAll('.problem-card, .feature-card, .whom-card');
       cards.forEach(card => {
         card.addEventListener('mousemove', e => {
@@ -2280,7 +2228,7 @@
         });
       });
 
-      // ── 4. EVA ANALYTICS CHART ──
+      // ── 3. EVA ANALYTICS CHART ──
       (function() {
         const datasets = {
           '1D': {
@@ -2418,7 +2366,7 @@
         window.addEventListener('resize', () => drawChart(currentPeriod));
       })();
 
-      // ── 5. EVA CHAT INTERACTION ──
+      // ── 4. EVA CHAT INTERACTION ──
       (function() {
         const input    = document.getElementById('evaChatInput');
         const sendBtn  = document.getElementById('evaSendBtn');
