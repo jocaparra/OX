@@ -28,9 +28,11 @@
       --font-serif: 'Instrument Serif', Georgia, serif;
       --transition-base: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       
-      /* Cores do Gradiente (Azul Claro para Verde Água Claro) */
-      --gradient-blue: #7DD3FC; /* Light Sky Blue */
-      --gradient-teal: #99F6E4; /* Light Aqua / Verde Água */
+      /* Cores do Gradiente Claro (Azuis) */
+      --blue-fade: #e9f6ff;
+      --blue-pale: #bae2ff;
+      --blue-mid:  #6bc1ff;
+      --blue-core: #3aadff;
     }
 
     *, *::before, *::after {
@@ -480,7 +482,7 @@
     }
 
     .text-gradient-blue {
-      background: linear-gradient(180deg, var(--gradient-blue), var(--gradient-teal));
+      background: linear-gradient(180deg, var(--blue-fade), var(--blue-pale), var(--blue-mid), var(--blue-core));
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
