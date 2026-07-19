@@ -360,7 +360,7 @@
       position: relative;
       z-index: 5;
       display: block;
-      transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+      transition: transform 1.25s cubic-bezier(0.08, 0.82, 0.17, 1), opacity 0.6s ease;
       opacity: 1;
       transform: translateY(0);
     }
@@ -373,7 +373,7 @@
       justify-content: center;
       z-index: 6;
       color: var(--bg-light) !important;
-      transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+      transition: transform 1.25s cubic-bezier(0.08, 0.82, 0.17, 1), opacity 0.6s ease;
       opacity: 0;
       transform: translateY(100%);
       pointer-events: none;
@@ -391,22 +391,22 @@
       pointer-events: none;
     }
 
-    /* Transição suave e lenta (0.85s) em cascata no hover e na saída (reverso) */
+    /* Transição extremamente suave e lenta (1.25s) em cascata no hover e na saída (reverso) */
     .nav-btn-tropicalia .layer-1 {
       background-color: #E2E8F0; /* Cinza Claro */
-      transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-      transition-delay: 0.16s; /* atraso na saída */
+      transition: transform 1.25s cubic-bezier(0.08, 0.82, 0.17, 1);
+      transition-delay: 0.2s; /* atraso na saída */
     }
 
     .nav-btn-tropicalia .layer-2 {
       background-color: #64748B; /* Cinza Médio */
-      transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-      transition-delay: 0.08s; /* atraso na saída */
+      transition: transform 1.25s cubic-bezier(0.08, 0.82, 0.17, 1);
+      transition-delay: 0.1s; /* atraso na saída */
     }
 
     .nav-btn-tropicalia .layer-3 {
       background-color: #000000; /* Preto */
-      transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 1.25s cubic-bezier(0.08, 0.82, 0.17, 1);
       transition-delay: 0s; /* instantâneo na saída */
     }
 
@@ -433,12 +433,12 @@
 
     .nav-btn-tropicalia:hover .layer-2 {
       transform: translate(-50%, -100%) scale(1);
-      transition-delay: 0.08s; /* cascata na entrada */
+      transition-delay: 0.1s; /* cascata na entrada */
     }
 
     .nav-btn-tropicalia:hover .layer-3 {
       transform: translate(-50%, -100%) scale(1);
-      transition-delay: 0.16s; /* cascata na entrada */
+      transition-delay: 0.2s; /* cascata na entrada */
     }
 
     /* ── Hero ── */
