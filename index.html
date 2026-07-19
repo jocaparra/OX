@@ -27,11 +27,13 @@
       --font-serif: 'Inter', sans-serif;
       --transition-base: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       
-      /* Cores do Gradiente Proporcionalmente Escurecidas */
-      --blue-fade: #cce0ff;
-      --blue-pale: #8fbdfa;
-      --blue-mid:  #5397f5;
-      --blue-core: #1c68cf;
+      /* Cores do Gradiente Estilo Apple */
+      --apple-blue-dark: #084cb3; /* Topo escurecido para profundidade */
+      --apple-blue-top: #0b5ed7;
+      --apple-blue-upper: #1d7ff5;
+      --apple-blue-center: #2497ff;
+      --apple-blue-lower: #35b2ff;
+      --apple-blue-bottom: #5cc8ff;
     }
 
     *, *::before, *::after {
@@ -492,7 +494,15 @@
     }
 
     .text-gradient-blue {
-      background: linear-gradient(180deg, var(--blue-fade), var(--blue-pale), var(--blue-mid), var(--blue-core));
+      background: linear-gradient(
+        180deg,
+        var(--apple-blue-dark) 0%,
+        var(--apple-blue-top) 12%,
+        var(--apple-blue-upper) 38%,
+        var(--apple-blue-center) 62%,
+        var(--apple-blue-lower) 82%,
+        var(--apple-blue-bottom) 100%
+      );
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
