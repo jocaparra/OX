@@ -304,7 +304,7 @@
     }
 
     .logo-mark {
-      height: 34px;
+      height: 44px;
       width: auto;
       flex-shrink: 0;
       display: block;
@@ -343,7 +343,9 @@
       color: var(--bg-light) !important; /* Branco (#FFFFFF) */
       font-size: 13px;
       font-weight: 600;
-      padding: 12px 24px;
+      padding: 0 24px;
+      height: 42px; /* Altura fixa para permitir o alinhamento e rolagem do texto */
+      min-width: 120px;
       border-radius: 100px;
       border: none;
       cursor: pointer;
@@ -354,39 +356,57 @@
       box-shadow: 0 4px 10px rgba(15, 23, 42, 0.15);
     }
 
-    .nav-btn-tropicalia .btn-text {
+    .nav-btn-tropicalia .btn-text-default {
       position: relative;
       z-index: 5;
+      display: block;
+      transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .nav-btn-tropicalia .btn-text-hover {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 6;
+      color: var(--bg-light) !important;
+      transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+      opacity: 0;
+      transform: translateY(100%);
+      pointer-events: none;
     }
 
     .nav-btn-tropicalia .ripple-layer {
       position: absolute;
-      top: 50%;
+      top: 100%; /* Inicia na borda inferior do botão */
       left: 50%;
-      width: 160%;
-      padding-bottom: 160%;
+      width: 180%;
+      padding-bottom: 180%;
       border-radius: 50%;
-      transform: translate(-50%, -50%) scale(0);
+      transform: translate(-50%, 0) scale(0);
       z-index: 2;
       pointer-events: none;
     }
 
-    /* Transição em cascata no hover e na saída (reverso) */
+    /* Transição suave e lenta (0.85s) em cascata no hover e na saída (reverso) */
     .nav-btn-tropicalia .layer-1 {
       background-color: #E2E8F0; /* Cinza Claro */
-      transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
       transition-delay: 0.16s; /* atraso na saída */
     }
 
     .nav-btn-tropicalia .layer-2 {
       background-color: #64748B; /* Cinza Médio */
-      transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
       transition-delay: 0.08s; /* atraso na saída */
     }
 
     .nav-btn-tropicalia .layer-3 {
       background-color: #000000; /* Preto */
-      transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
       transition-delay: 0s; /* instantâneo na saída */
     }
 
@@ -395,18 +415,29 @@
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     }
 
+    /* Gatilhos do Estado Hover */
+    .nav-btn-tropicalia:hover .btn-text-default {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+
+    .nav-btn-tropicalia:hover .btn-text-hover {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
     .nav-btn-tropicalia:hover .layer-1 {
-      transform: translate(-50%, -50%) scale(1);
+      transform: translate(-50%, -100%) scale(1);
       transition-delay: 0s; /* imediato na entrada */
     }
 
     .nav-btn-tropicalia:hover .layer-2 {
-      transform: translate(-50%, -50%) scale(1);
+      transform: translate(-50%, -100%) scale(1);
       transition-delay: 0.08s; /* cascata na entrada */
     }
 
     .nav-btn-tropicalia:hover .layer-3 {
-      transform: translate(-50%, -50%) scale(1);
+      transform: translate(-50%, -100%) scale(1);
       transition-delay: 0.16s; /* cascata na entrada */
     }
 
@@ -1957,10 +1988,11 @@
       </a>
       <div class="nav-right">
         <a href="https://api.whatsapp.com/send?phone=5519999560806&text=Ol%C3%A1%2C%20gostaria%20de%20falar%20sobre%20o%20meu%20deal%20com%20a%20EVA." class="nav-btn-tropicalia" target="_blank" rel="noopener noreferrer">
-          <span class="btn-text">Contact Us</span>
+          <span class="btn-text-default">Contact Us</span>
           <span class="ripple-layer layer-1"></span>
           <span class="ripple-layer layer-2"></span>
           <span class="ripple-layer layer-3"></span>
+          <span class="btn-text-hover">Contact Us</span>
         </a>
       </div>
     </div>
