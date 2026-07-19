@@ -1786,93 +1786,108 @@
 
     /* ── Footer ── */
     .footer {
-      border-top: 1px solid #E2E8F0;
-      padding: 40px 0;
+      border-top: 1px solid var(--border-light);
+      background: #FFFFFF;
+      padding: 60px 0 40px;
     }
 
-    .footer-inner {
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1.5fr 2fr 1.5fr;
+        align-items: flex-start;
+      }
+    }
+
+    .footer-col {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
+      flex-direction: column;
     }
 
-    .footer-left {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      font-size: 13px;
-      color: #94A3B8;
-    }
-
-    .footer-wordmark {
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #0F172A;
-    }
-
-    .footer-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      font-size: 13px;
-      color: #64748B;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover {
-      color: #0F172A;
-    }
-
-    /* ── EVA Stamp ── */
-    .eva-stamp {
-      background: #EEF2F6;
-      border-top: 1px solid #E2E8F0;
-      padding: 0 32px;
-      overflow: hidden;
-    }
-
-    .eva-stamp-inner {
-      max-width: 100%;
-      margin: 0 auto;
-      position: relative;
-      display: flex;
-      align-items: center;
+    .brand-col {
       justify-content: center;
-      min-height: clamp(320px, 55vh, 520px);
-      padding: 60px 0 80px;
     }
 
-    .eva-stamp-text {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: clamp(200px, 32vw, 480px);
-      line-height: 0.85;
-      letter-spacing: -0.05em;
-      color: #EEF2F6;
-      text-shadow:
-        4px 4px 10px rgba(148, 163, 184, 0.5),
-        -4px -4px 10px rgba(255, 255, 255, 1);
-      user-select: none;
-      pointer-events: none;
-      width: 100%;
+    .footer-logo {
+      height: 32px;
+      width: auto;
+      align-self: flex-start;
+    }
+
+    .footer-col-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #7C3AED; /* Violeta idêntico à imagem de referência */
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .footer-col-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .footer-col-links a {
+      font-size: 14px;
+      color: #64748B;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-col-links a:hover {
+      color: #0F172A;
+    }
+
+    .footer-social-icons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .social-icon-link {
+      display: inline-flex;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .social-icon-link:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+
+    .footer-divider {
+      height: 1px;
+      background: var(--border-light);
+      margin-bottom: 24px;
+    }
+
+    .footer-bottom {
       text-align: center;
     }
 
-    .eva-stamp-tag {
-      position: absolute;
-      right: 32px;
-      bottom: 32px;
+    .footer-copyright {
       font-size: 13px;
-      font-weight: 400;
-      color: #CBD5E1;
-      letter-spacing: 0.02em;
+      color: #64748B;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 767px) {
+      .footer-grid {
+        text-align: left;
+        gap: 24px;
+      }
+      .footer-logo {
+        margin-bottom: 12px;
+      }
+      .footer-col-links {
+        flex-direction: column;
+        gap: 12px;
+      }
     }
 
     /* ── Card Glow & Content Elevation ── */
@@ -2073,25 +2088,6 @@
         font-size: clamp(28px, 7vw, 44px);
       }
 
-      .footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .eva-stamp-inner {
-        min-height: clamp(240px, 45vh, 400px);
-        padding: 40px 0 60px;
-      }
-
-      .eva-stamp-text {
-        font-size: clamp(160px, 38vw, 320px);
-      }
-
-      .eva-stamp-tag {
-        right: 16px;
-        bottom: 16px;
-        font-size: 11px;
-      }
     }
   </style>
 </head>
@@ -2492,28 +2488,35 @@
   <!-- ── 10. FOOTER ── -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-inner">
-        <div class="footer-left">
-          <span class="footer-wordmark">EVA</span>
-          <span>© 2026 EVA. Todos os direitos reservados.</span>
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <img src="assets/logo-eva-black.png" alt="EVA" class="footer-logo" />
         </div>
-        <div class="footer-links">
-          <a href="#features">O que fazemos</a>
-          <a href="#whom">Para quem</a>
-          <a href="https://api.whatsapp.com/send?phone=5519999560806&text=Ol%C3%A1%2C%20gostaria%20de%20falar%20sobre%20o%20meu%20deal%20com%20a%20EVA." target="_blank" rel="noopener noreferrer">Contato</a>
-          <a href="#">Política de Privacidade</a>
+        <div class="footer-col links-col">
+          <span class="footer-col-title">Resources</span>
+          <div class="footer-col-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of use</a>
+          </div>
         </div>
+        <div class="footer-col socials-col">
+          <span class="footer-col-title">Socials</span>
+          <div class="footer-social-icons">
+            <a href="https://www.linkedin.com/company/eva-capital-m-a/" class="social-icon-link linkedin-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="16" r="16" fill="black"/>
+                <path d="M11.5 11h3v10h-3zM13 7.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zM16.5 11h2.8v1.4h.1c.4-.7 1.3-1.6 2.8-1.6 3 0 3.5 2 3.5 4.6V21h-3v-4.7c0-1.1 0-2.6-1.6-2.6-1.6 0-1.8 1.2-1.8 2.5V21h-3V11z" fill="white"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2026 EVA Capital. Todos os direitos reservados. Desenvolvido com alma brasileira.</p>
       </div>
     </div>
   </footer>
-
-  <!-- ── EVA STAMP ── -->
-  <section class="eva-stamp reveal-scale" aria-hidden="true" style="border-top: 1px solid var(--border-light);">
-    <div class="eva-stamp-inner">
-      <h2 class="eva-stamp-text">EVA</h2>
-      <p class="eva-stamp-tag">Building Intelligence for the Real Economy.</p>
-    </div>
-  </section>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
