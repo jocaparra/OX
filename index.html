@@ -1666,15 +1666,26 @@
     .faq-list {
       display: flex;
       flex-direction: column;
+      gap: 16px;
     }
 
     .faq-item {
-      border-bottom: 1px solid var(--border-light);
-      padding: 24px 0;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 22px 28px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .faq-item:first-child {
-      border-top: 1px solid var(--border-light);
+    .faq-item:hover {
+      background: #F1F5F9;
+      border-color: #CBD5E1;
+    }
+
+    .faq-item.active {
+      background: #FFFFFF;
+      border-color: #0F172A;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
     }
 
     .faq-question {
@@ -1688,7 +1699,7 @@
       justify-content: space-between;
       text-align: left;
       font-family: var(--font-sans);
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 600;
       color: var(--text-light);
       cursor: pointer;
@@ -1710,7 +1721,7 @@
     }
 
     .faq-item.active .faq-icon svg {
-      transform: rotate(135deg);
+      transform: rotate(180deg);
       color: var(--text-light);
     }
 
@@ -2388,7 +2399,7 @@
             <button class="faq-question">
               <span>A IA realmente executa o deal sozinha?</span>
               <span class="faq-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </span>
             </button>
             <div class="faq-answer-wrapper">
@@ -2401,7 +2412,7 @@
             <button class="faq-question">
               <span>Como vocês evitam conflito operando os dois lados do mercado?</span>
               <span class="faq-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </span>
             </button>
             <div class="faq-answer-wrapper">
@@ -2414,7 +2425,7 @@
             <button class="faq-question">
               <span>Meus documentos e dados do data room estão seguros?</span>
               <span class="faq-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </span>
             </button>
             <div class="faq-answer-wrapper">
@@ -2427,7 +2438,7 @@
             <button class="faq-question">
               <span>Quanto tempo leva do mandato até a contraparte certa?</span>
               <span class="faq-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </span>
             </button>
             <div class="faq-answer-wrapper">
@@ -2440,7 +2451,7 @@
             <button class="faq-question">
               <span>Como a EVA antecipa o risco fiscal antes da diligência?</span>
               <span class="faq-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </span>
             </button>
             <div class="faq-answer-wrapper">
@@ -2453,7 +2464,7 @@
             <button class="faq-question">
               <span>Quanto custa?</span>
               <span class="faq-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </span>
             </button>
             <div class="faq-answer-wrapper">
