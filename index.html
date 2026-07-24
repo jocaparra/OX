@@ -1631,59 +1631,69 @@
       line-height: 1.5;
     }
 
-    /* ── FAQ ── */
+    /* ── FAQ (Estilo Tropicalia) ── */
     .faq {
-      background: var(--bg-light);
+      background: #F8FAFC;
       padding: 100px 0;
     }
 
-    .faq-layout {
-      display: flex;
-      flex-direction: column;
-      gap: 48px;
+    .faq-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 28px;
+      padding: 64px 48px;
+      max-width: 900px;
+      margin: 0 auto;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.03);
+      text-align: center;
     }
 
-    @media (min-width: 992px) {
-      .faq-layout {
-        flex-direction: row;
-        gap: 80px;
-      }
-      .faq-header {
-        flex: 1;
-        position: sticky;
-        top: 120px;
-        align-self: flex-start;
-      }
-      .faq-list {
-        flex: 2;
-      }
+    .faq-header-centered {
+      margin-bottom: 44px;
     }
 
-    .faq-header .eyebrow {
-      margin-bottom: 16px;
+    .faq-header-centered .eyebrow {
+      margin-bottom: 12px;
+    }
+
+    .faq-main-title {
+      font-weight: 700;
+      font-size: clamp(32px, 4vw, 44px);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: #0F172A;
+    }
+
+    .faq-main-title em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      text-transform: none;
     }
 
     .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
+      text-align: left;
     }
 
     .faq-item {
-      background: #F8FAFC;
+      background: #FFFFFF;
       border: 1px solid #E2E8F0;
       border-radius: 16px;
-      padding: 22px 28px;
+      padding: 20px 24px;
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .faq-item:hover {
-      background: #F1F5F9;
       border-color: #CBD5E1;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
     }
 
     .faq-item.active {
-      background: #FFFFFF;
       border-color: #0F172A;
       box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
     }
@@ -1699,18 +1709,18 @@
       justify-content: space-between;
       text-align: left;
       font-family: var(--font-sans);
-      font-size: 17px;
+      font-size: 16.5px;
       font-weight: 600;
-      color: var(--text-light);
+      color: #0F172A;
       cursor: pointer;
-      gap: 24px;
+      gap: 20px;
     }
 
     .faq-icon {
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--text-light-muted);
+      color: #64748B;
       width: 24px;
       height: 24px;
       flex-shrink: 0;
@@ -1722,7 +1732,7 @@
 
     .faq-item.active .faq-icon svg {
       transform: rotate(180deg);
-      color: var(--text-light);
+      color: #0F172A;
     }
 
     .faq-answer-wrapper {
@@ -1741,10 +1751,20 @@
     }
 
     .faq-answer p {
-      padding-top: 16px;
-      font-size: 15px;
+      padding-top: 14px;
+      font-size: 14.5px;
       line-height: 1.65;
-      color: var(--text-light-muted);
+      color: #64748B;
+    }
+
+    @media (max-width: 767px) {
+      .faq-card {
+        padding: 40px 20px;
+        border-radius: 20px;
+      }
+      .faq-item {
+        padding: 18px 20px;
+      }
     }
 
     /* ── CTA Final ── */
@@ -2386,13 +2406,13 @@
     </div>
   </section>
 
-  <!-- ── 8. FAQ ── -->
+  <!-- ── 8. FAQ (Estilo Tropicalia) ── -->
   <section class="section faq" id="faq">
     <div class="container reveal">
-      <div class="faq-layout">
-        <div class="faq-header">
+      <div class="faq-card">
+        <div class="faq-header-centered">
           <p class="eyebrow">FAQ</p>
-          <h2 class="section-title">Perguntas<br><em class="text-gradient-blue">frequentes</em></h2>
+          <h2 class="faq-main-title">Perguntas<br><em class="text-gradient-blue">frequentes</em></h2>
         </div>
         <div class="faq-list">
           <div class="faq-item">
