@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EVA, a primeira firma de captação de capital operada por IA</title>
-  <meta name="description" content="A EVA ajuda empresas a levantar rodadas de investimento, do material ao fechamento. IA para higiene fiscal, pitch deck, modelo financeiro e mapeamento de investidor, revisado por banker sênior." />
+  <title>EVA, Building Intelligence for the Real Economy</title>
+  <meta name="description" content="EVA executa processos completos de análise, documentação e decisão, sem supervisão constante. The Operating System for Modern Businesses." />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="apple-touch-icon" href="assets/favicon.png" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
 
     :root {
       --accent: #0F172A; /* Chumbo/Preto profundo */
@@ -19,21 +20,13 @@
       --border-dark: rgba(255, 255, 255, 0.07);
       --text-dark-muted: #94A3B8;
       --bg-light: #FFFFFF;
-      --bg-light-sec: #FFFFFF;
+      --bg-light-sec: #F8FAFC;
       --border-light: #E2E8F0;
       --text-light: #0F172A;
       --text-light-muted: #64748B;
       --font-sans: 'Inter', sans-serif;
-      --font-serif: 'Inter', sans-serif;
+      --font-serif: 'Instrument Serif', Georgia, serif;
       --transition-base: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      
-      /* Cores do Gradiente Estilo Apple */
-      --apple-blue-dark: #084cb3; /* Topo escurecido para profundidade */
-      --apple-blue-top: #0b5ed7;
-      --apple-blue-upper: #1d7ff5;
-      --apple-blue-center: #2497ff;
-      --apple-blue-lower: #35b2ff;
-      --apple-blue-bottom: #5cc8ff;
     }
 
     *, *::before, *::after {
@@ -44,7 +37,6 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 72px;
     }
 
     body {
@@ -279,26 +271,22 @@
     /* ── Nav ── */
     .nav {
       position: fixed;
-      top: 16px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: calc(100% - 32px);
-      max-width: 1080px;
-      z-index: 1000;
-      height: 68px;
-      background: rgba(255, 255, 255, 0.70);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(226, 232, 240, 0.8);
-      border-radius: 20px;
-      box-shadow: 0 8px 32px -4px rgba(15, 23, 42, 0.06), 0 4px 12px -2px rgba(15, 23, 42, 0.02);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.90);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid #E2E8F0;
     }
 
     .nav-inner {
-      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 32px;
       height: 100%;
-      padding: 0 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -311,7 +299,7 @@
     }
 
     .logo-mark {
-      height: 40px;
+      height: 30px;
       width: auto;
       flex-shrink: 0;
       display: block;
@@ -331,121 +319,12 @@
 
     .nav-links a {
       font-size: 14px;
-      font-weight: 500;
       color: #64748B;
-      text-decoration: none;
-      transition: color 0.15s;
+      transition: color 0.2s;
     }
 
     .nav-links a:hover {
       color: #0F172A;
-    }
-
-    .nav-btn-tropicalia {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background-color: var(--text-light); /* Grafite Escuro (#0F172A) */
-      color: var(--bg-light) !important; /* Branco (#FFFFFF) */
-      font-size: 13px;
-      font-weight: 600;
-      padding: 0 24px;
-      height: 42px; /* Altura fixa para permitir o alinhamento e rolagem do texto */
-      min-width: 120px;
-      border-radius: 100px;
-      border: none;
-      cursor: pointer;
-      overflow: hidden;
-      z-index: 1;
-      text-decoration: none;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.15);
-    }
-
-    .nav-btn-tropicalia .btn-text-default {
-      position: relative;
-      z-index: 5;
-      display: block;
-      transition: transform 1.25s cubic-bezier(0.08, 0.82, 0.17, 1), opacity 0.6s ease;
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .nav-btn-tropicalia .btn-text-hover {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 6;
-      color: var(--bg-light) !important;
-      transition: transform 1.25s cubic-bezier(0.08, 0.82, 0.17, 1), opacity 0.6s ease;
-      opacity: 0;
-      transform: translateY(100%);
-      pointer-events: none;
-    }
-
-    .nav-btn-tropicalia .ripple-layer {
-      position: absolute;
-      top: 100%; /* Inicia na borda inferior do botão */
-      left: 50%;
-      width: 180%;
-      padding-bottom: 180%;
-      border-radius: 50%;
-      transform: translate(-50%, 0) scale(0);
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    /* Transição extremamente suave e lenta (1.25s) em cascata no hover e na saída (reverso) */
-    .nav-btn-tropicalia .layer-1 {
-      background-color: #E2E8F0; /* Cinza Claro */
-      transition: transform 1.25s cubic-bezier(0.08, 0.82, 0.17, 1);
-      transition-delay: 0.2s; /* atraso na saída */
-    }
-
-    .nav-btn-tropicalia .layer-2 {
-      background-color: #64748B; /* Cinza Médio */
-      transition: transform 1.25s cubic-bezier(0.08, 0.82, 0.17, 1);
-      transition-delay: 0.1s; /* atraso na saída */
-    }
-
-    .nav-btn-tropicalia .layer-3 {
-      background-color: #000000; /* Preto */
-      transition: transform 1.25s cubic-bezier(0.08, 0.82, 0.17, 1);
-      transition-delay: 0s; /* instantâneo na saída */
-    }
-
-    .nav-btn-tropicalia:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-    }
-
-    /* Gatilhos do Estado Hover */
-    .nav-btn-tropicalia:hover .btn-text-default {
-      transform: translateY(-100%);
-      opacity: 0;
-    }
-
-    .nav-btn-tropicalia:hover .btn-text-hover {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    .nav-btn-tropicalia:hover .layer-1 {
-      transform: translate(-50%, -100%) scale(1);
-      transition-delay: 0s; /* imediato na entrada */
-    }
-
-    .nav-btn-tropicalia:hover .layer-2 {
-      transform: translate(-50%, -100%) scale(1);
-      transition-delay: 0.1s; /* cascata na entrada */
-    }
-
-    .nav-btn-tropicalia:hover .layer-3 {
-      transform: translate(-50%, -100%) scale(1);
-      transition-delay: 0.2s; /* cascata na entrada */
     }
 
     /* ── Hero ── */
@@ -456,31 +335,20 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 130px 32px 100px;
+      padding: 180px 32px 120px;
     }
 
     .hero-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(15, 23, 42, 0.03);
-      border: 1px solid rgba(15, 23, 42, 0.08);
-      border-radius: 9999px;
-      font-size: 13px;
+      display: inline-block;
+      border: 1px solid #E2E8F0;
+      border-radius: 100px;
+      font-size: 11px;
       font-weight: 500;
-      color: #0F172A;
-      padding: 6px 14px;
-      margin-bottom: 28px;
-      text-transform: none;
-      letter-spacing: -0.01em;
-      line-height: 1.2;
-      transition: all var(--transition-base);
-      cursor: pointer;
-    }
-
-    .hero-pill:hover {
-      background: rgba(15, 23, 42, 0.06);
-      border-color: rgba(15, 23, 42, 0.15);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #64748B;
+      padding: 8px 18px;
+      margin-bottom: 32px;
     }
 
     .hero h1 {
@@ -493,26 +361,9 @@
       margin-bottom: 28px;
     }
 
-    .text-gradient-blue {
-      background: linear-gradient(
-        180deg,
-        var(--apple-blue-dark) 0%,
-        var(--apple-blue-top) 12%,
-        var(--apple-blue-upper) 38%,
-        var(--apple-blue-center) 62%,
-        var(--apple-blue-lower) 82%,
-        var(--apple-blue-bottom) 100%
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: transparent;
-      display: inline-block;
-    }
-
     .hero-sub {
       font-size: 18px;
-      color: #0F172A;
+      color: #64748B;
       max-width: 500px;
       line-height: 1.65;
       margin-bottom: 36px;
@@ -1052,7 +903,7 @@
 
     .metric-value {
       font-weight: 700;
-      font-size: clamp(24px, 3.2vw, 36px);
+      font-size: clamp(44px, 5vw, 64px);
       letter-spacing: -0.03em;
       line-height: 1.08;
       color: #0F172A;
@@ -1060,7 +911,7 @@
     }
 
     .metric-label {
-      font-size: 12px;
+      font-size: 13px;
       color: #64748B;
     }
 
@@ -1108,7 +959,7 @@
 
     /* ── Platform (Features) ── */
     .features {
-      background: var(--bg-light);
+      background: #F8FAFC;
     }
 
     .features-header {
@@ -1117,7 +968,7 @@
 
     .platform-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
 
@@ -1534,7 +1385,7 @@
 
     /* ── How It Works ── */
     .how {
-      position: relative;
+      border-top: 1px solid #E2E8F0;
     }
 
     .how-header {
@@ -1572,7 +1423,8 @@
 
     /* ── For Whom ── */
     .whom {
-      background: var(--bg-light);
+      background: #F8FAFC;
+      border-top: 1px solid #E2E8F0;
     }
 
     .whom-header {
@@ -1631,141 +1483,29 @@
       line-height: 1.5;
     }
 
-    /* ── FAQ ── */
-    .faq {
-      background: var(--bg-light);
-      padding: 100px 0;
+    /* ── Proof ── */
+    .proof {
+      border-top: 1px solid #E2E8F0;
     }
 
-    .faq-card {
-      background: #FFFFFF;
-      border: 1px solid #E2E8F0;
-      border-radius: 28px;
-      padding: 64px 48px;
-      max-width: 900px;
-      margin: 0 auto;
-      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
-      text-align: center;
-    }
-
-    .faq-header-centered {
-      margin-bottom: 44px;
-    }
-
-    .faq-header-centered .eyebrow {
-      margin-bottom: 12px;
-    }
-
-    .faq-main-title {
-      font-weight: 700;
-      font-size: clamp(32px, 4vw, 44px);
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      color: #0F172A;
-    }
-
-    .faq-main-title em {
-      font-family: var(--font-serif);
-      font-style: italic;
+    .proof-quote {
       font-weight: 400;
-      text-transform: none;
-    }
-
-    .faq-list {
-      max-width: 760px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      text-align: left;
-    }
-
-    .faq-item {
-      background: #FFFFFF;
-      border: 1px solid #E2E8F0;
-      border-radius: 16px;
-      padding: 20px 24px;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.02);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .faq-item:hover {
-      border-color: #CBD5E1;
-      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
-    }
-
-    .faq-item.active {
-      border-color: #0F172A;
-      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.07);
-    }
-
-    .faq-question {
-      width: 100%;
-      background: none;
-      border: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      text-align: left;
-      font-family: var(--font-sans);
-      font-size: 16.5px;
-      font-weight: 600;
+      font-size: clamp(22px, 3vw, 32px);
+      line-height: 1.45;
       color: #0F172A;
-      cursor: pointer;
-      gap: 20px;
+      max-width: 720px;
+      letter-spacing: -0.01em;
     }
 
-    .faq-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #64748B;
-      width: 24px;
-      height: 24px;
-      flex-shrink: 0;
-    }
-
-    .faq-icon svg {
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .faq-item.active .faq-icon svg {
-      transform: rotate(180deg);
-      color: #0F172A;
-    }
-
-    .faq-answer-wrapper {
-      display: grid;
-      grid-template-rows: 0fr;
-      transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      overflow: hidden;
-    }
-
-    .faq-item.active .faq-answer-wrapper {
-      grid-template-rows: 1fr;
-    }
-
-    .faq-answer {
-      min-height: 0;
-    }
-
-    .faq-answer p {
-      padding-top: 14px;
-      font-size: 14.5px;
-      line-height: 1.65;
+    .proof-quote em {
+      font-style: normal;
       color: #64748B;
     }
 
-    @media (max-width: 767px) {
-      .faq-card {
-        padding: 40px 20px;
-        border-radius: 20px;
-      }
-      .faq-item {
-        padding: 18px 20px;
-      }
+    .proof-attribution {
+      font-size: 13px;
+      color: #94A3B8;
+      margin-top: 32px;
     }
 
     /* ── CTA Final ── */
@@ -1813,123 +1553,95 @@
       margin-top: 24px;
     }
 
-    /* ── Linha com Gradiente Azul ── */
-    .blue-gradient-line {
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(
-        180deg,
-        #1D46E6 0%,
-        #215AF2 20%,
-        #277EFF 45%,
-        #2F9CFF 70%,
-        #55C8FF 100%
-      );
-    }
-
     /* ── Footer ── */
     .footer {
-      background: #FFFFFF;
-      padding: 60px 0 40px;
+      border-top: 1px solid #E2E8F0;
+      padding: 40px 0;
     }
 
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 32px;
-      margin-bottom: 40px;
-    }
-
-    @media (min-width: 768px) {
-      .footer-grid {
-        grid-template-columns: 1.5fr 2fr 1.5fr;
-        align-items: flex-start;
-      }
-    }
-
-    .footer-col {
+    .footer-inner {
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
     }
 
-    .brand-col {
-      justify-content: center;
-    }
-
-    .footer-logo {
-      height: 32px;
-      width: auto;
-      align-self: flex-start;
-    }
-
-    .footer-col-title {
-      font-size: 14px;
-      font-weight: 600;
-      color: #7C3AED; /* Violeta idêntico à imagem de referência */
-      margin-bottom: 16px;
-      letter-spacing: -0.01em;
-    }
-
-    .footer-col-links {
+    .footer-left {
       display: flex;
-      gap: 32px;
+      align-items: center;
+      gap: 16px;
+      font-size: 13px;
+      color: #94A3B8;
     }
 
-    .footer-col-links a {
-      font-size: 14px;
-      color: #64748B;
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .footer-col-links a:hover {
+    .footer-wordmark {
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
       color: #0F172A;
     }
 
-    .footer-social-icons {
+    .footer-links {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 24px;
+      flex-wrap: wrap;
     }
 
-    .social-icon-link {
-      display: inline-flex;
-      transition: transform 0.2s ease, opacity 0.2s ease;
+    .footer-links a {
+      font-size: 13px;
+      color: #64748B;
+      transition: color 0.2s;
     }
 
-    .social-icon-link:hover {
-      transform: scale(1.05);
-      opacity: 0.9;
+    .footer-links a:hover {
+      color: #0F172A;
     }
 
-    .footer-divider {
-      height: 1px;
-      background: var(--border-light);
-      margin-bottom: 24px;
+    /* ── EVA Stamp ── */
+    .eva-stamp {
+      background: #EEF2F6;
+      border-top: 1px solid #E2E8F0;
+      padding: 0 32px;
+      overflow: hidden;
     }
 
-    .footer-bottom {
+    .eva-stamp-inner {
+      max-width: 100%;
+      margin: 0 auto;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: clamp(320px, 55vh, 520px);
+      padding: 60px 0 80px;
+    }
+
+    .eva-stamp-text {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(200px, 32vw, 480px);
+      line-height: 0.85;
+      letter-spacing: -0.05em;
+      color: #EEF2F6;
+      text-shadow:
+        4px 4px 10px rgba(148, 163, 184, 0.5),
+        -4px -4px 10px rgba(255, 255, 255, 1);
+      user-select: none;
+      pointer-events: none;
+      width: 100%;
       text-align: center;
     }
 
-    .footer-copyright {
+    .eva-stamp-tag {
+      position: absolute;
+      right: 32px;
+      bottom: 32px;
       font-size: 13px;
-      color: #64748B;
-      line-height: 1.5;
-    }
-
-    @media (max-width: 767px) {
-      .footer-grid {
-        text-align: left;
-        gap: 24px;
-      }
-      .footer-logo {
-        margin-bottom: 12px;
-      }
-      .footer-col-links {
-        flex-direction: column;
-        gap: 12px;
-      }
+      font-weight: 400;
+      color: #CBD5E1;
+      letter-spacing: 0.02em;
     }
 
     /* ── Card Glow & Content Elevation ── */
@@ -1988,7 +1700,7 @@
       }
 
       .hero {
-        padding: 100px 32px 60px;
+        padding: 140px 32px 80px;
         min-height: auto;
       }
 
@@ -2130,6 +1842,25 @@
         font-size: clamp(28px, 7vw, 44px);
       }
 
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .eva-stamp-inner {
+        min-height: clamp(240px, 45vh, 400px);
+        padding: 40px 0 60px;
+      }
+
+      .eva-stamp-text {
+        font-size: clamp(160px, 38vw, 320px);
+      }
+
+      .eva-stamp-tag {
+        right: 16px;
+        bottom: 16px;
+        font-size: 11px;
+      }
     }
   </style>
 </head>
@@ -2142,13 +1873,12 @@
         <img src="assets/logo-eva-black.png" alt="EVA" class="logo-mark" />
       </a>
       <div class="nav-right">
-        <a href="https://api.whatsapp.com/send?phone=5519999560806&text=Ol%C3%A1%2C%20gostaria%20de%20falar%20sobre%20minha%20rodada%20de%20capta%C3%A7%C3%A3o%20com%20a%20EVA." class="nav-btn-tropicalia" target="_blank" rel="noopener noreferrer">
-          <span class="btn-text-default">Contact Us</span>
-          <span class="ripple-layer layer-1"></span>
-          <span class="ripple-layer layer-2"></span>
-          <span class="ripple-layer layer-3"></span>
-          <span class="btn-text-hover">Contact Us</span>
-        </a>
+        <div class="nav-links">
+          <a href="#features">Produto</a>
+          <a href="#how">Como funciona</a>
+          <a href="#whom">Para quem</a>
+        </div>
+        <a href="https://api.whatsapp.com/send?phone=5519999560806&text=Ol%C3%A1%2C%20tenho%20interesse%20ao%20acesso%20antecipado%20da%20EVA." class="btn-primary" target="_blank" rel="noopener noreferrer">Agendar Demo</a>
       </div>
     </div>
   </nav>
@@ -2156,8 +1886,9 @@
   <!-- ── 2. HERO ── -->
   <section class="hero" style="position: relative; overflow: hidden;">
     <div class="grid-pattern"></div>
-    <h1 class="reveal delay-100 hero-headline">AI-run capital raising.<br><span class="text-gradient-blue">Built to close.</span></h1>
-    <p class="hero-sub reveal delay-300">💰 A rodada inteira, você só assina</p>
+    <span class="hero-pill reveal delay-100">A camada de inteligência para times de M&A, PE e Venture</span>
+    <h1 class="reveal delay-200">Building Intelligence<br> for the Real Economy.</h1>
+    <p class="hero-sub reveal delay-300">EVA executa o trabalho pesado de um deal, análise de data room, materiais institucionais e mapeamento de risco fiscal, do primeiro dado ao entregável pronto para o comitê. Sem supervisão constante.</p>
     <div class="backed-by reveal delay-400">
       <span class="backed-by-label">Backed by:</span>
       <div class="backed-by-logos">
@@ -2166,44 +1897,61 @@
       </div>
     </div>
     <div class="hero-cta reveal delay-500">
-      <a href="https://api.whatsapp.com/send?phone=5519999560806&text=Ol%C3%A1%2C%20gostaria%20de%20falar%20sobre%20minha%20rodada%20de%20capta%C3%A7%C3%A3o%20com%20a%20EVA." class="btn-primary" target="_blank" rel="noopener noreferrer">Falar sobre sua rodada</a>
-      <a href="#how" class="btn-ghost">Ver como funciona</a>
+      <a href="https://api.whatsapp.com/send?phone=5519999560806&text=Ol%C3%A1%2C%20tenho%20interesse%20ao%20acesso%20antecipado%20da%20EVA." class="btn-primary" target="_blank" rel="noopener noreferrer">Agendar Demo</a>
+      <a href="#how" class="btn-ghost">Ver como funciona →</a>
     </div>
-    <!-- Vídeo Hero -->
-    <video autoplay loop playsinline controls class="hero-visual reveal-scale delay-300" style="margin: 32px auto 0;">
-      <source src="assets/Video%20hero.mp4" type="video/mp4">
-      Seu navegador não suporta vídeos HTML5.
-    </video>
+    <!-- Imagem Hero 4K -->
+    <img src="assets/hero-product.png" srcset="assets/hero-product@2x.png 4536w" sizes="(max-width: 920px) 100vw, 920px" alt="Interface da EVA analisando deals em due diligence" class="hero-visual reveal-scale delay-300" width="4536" height="2949" loading="eager" fetchpriority="high" decoding="async" style="margin: 32px auto 0;" />
   </section>
 
+  <!-- ── 3. METRICS BAR ── -->
+  <section class="metrics">
+    <div class="container">
+      <div class="metrics-grid viewfinder reveal">
+        <div class="viewfinder-inner"></div>
+        <div class="metric-item reveal delay-100">
+          <div class="metric-value">4 min</div>
+          <div class="metric-label">Para gerar um valuation completo</div>
+        </div>
+        <div class="metric-item reveal delay-200">
+          <div class="metric-value">2×</div>
+          <div class="metric-label">Capacidade com o mesmo headcount</div>
+        </div>
+        <div class="metric-item reveal delay-300">
+          <div class="metric-value">80%</div>
+          <div class="metric-label">Menos due diligence manual</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ── 4. PROBLEM ── -->
   <section class="section problem">
     <div class="container">
       <div class="problem-header reveal">
         <p class="eyebrow">O problema</p>
-        <h2 class="section-title">Captar uma rodada é <em class="text-gradient-blue">lento, caro e incerto.</em></h2>
+        <h2 class="section-title">Seu time está operando abaixo do <em>potencial</em>.</h2>
       </div>
       <div class="problem-grid">
         <div class="problem-card reveal-scale delay-100">
           <div class="card-number">01</div>
           <div>
-            <h3 class="card-title">Achar o investidor certo depende de relacionamento e sorte</h3>
-            <p class="card-desc">Cruzar sua tese contra o investidor com apetite real é limitado por redes de relacionamentos pessoais e processos lentos.</p>
+            <h3 class="card-title">Trabalho operacional consome tempo estratégico</h3>
+            <p class="card-desc">Analistas e sêniors gastam mais de 30% do tempo em apresentações, trackers e pesquisas manuais. Tempo que deveria estar em análise e relacionamento.</p>
           </div>
         </div>
         <div class="problem-card reveal-scale delay-200">
           <div class="card-number">02</div>
           <div>
-            <h3 class="card-title">Produzir o material consome semanas</h3>
-            <p class="card-desc">Elaborar pitch deck, modelo financeiro, cap table e memorando de uso de capital exige centenas de horas que podiam ir para a conversa com investidor.</p>
+            <h3 class="card-title">Escalar exige contratar, e contratar é lento e caro</h3>
+            <p class="card-desc">Para aumentar volume, a única opção é aumentar headcount. O custo cresce junto com a operação, e a qualidade varia conforme quem executa.</p>
           </div>
         </div>
         <div class="problem-card reveal-scale delay-300">
           <div class="card-number">03</div>
           <div>
-            <h3 class="card-title">A diligência do investidor trava o fechamento na reta final</h3>
-            <p class="card-desc">Passivos fiscais não mapeados aparecem no final do processo, travando a rodada ou derrubando o valuation negociado.</p>
+            <h3 class="card-title">IA genérica não entende o seu contexto</h3>
+            <p class="card-desc">ChatGPT e ferramentas genéricas geram rascunhos que precisam ser refeitos. Não leem um data room, não conhecem o padrão institucional do seu deal nem a realidade fiscal e regulatória brasileira.</p>
           </div>
         </div>
       </div>
@@ -2214,16 +1962,128 @@
   <section class="section features" id="features">
     <div class="container">
       <div class="features-header reveal">
-        <p class="eyebrow">O que fazemos</p>
-        <h2 class="section-title">Uma firma que executa a captação inteira, <em class="text-gradient-blue">do material ao fechamento.</em></h2>
+        <p class="eyebrow">A Plataforma</p>
+        <h2 class="section-title">A IA que aprende como sua empresa <em>pensa e trabalha</em>.</h2>
       </div>
       
       <div class="platform-grid">
         
-        <!-- Card 1: Encontramos a contraparte certa -->
+        <!-- Card 1: Integrations -->
         <div class="feature-card reveal-scale delay-100">
           <div>
-            <h3 class="card-title">Encontramos o investidor certo</h3>
+            <h3 class="card-title">Integrações</h3>
+            <div class="integrations-grid">
+              <!-- Microsoft Word -->
+              <div class="integration-box" title="Microsoft Word">
+                <svg viewBox="0 0 24 24" style="width: 28px; height: 28px;">
+                  <rect x="7" y="3.5" width="14" height="17" rx="1.5" fill="#185ABD" />
+                  <rect x="10" y="7" width="8" height="1.5" fill="#FFFFFF" opacity="0.6" />
+                  <rect x="10" y="10" width="8" height="1.5" fill="#FFFFFF" opacity="0.6" />
+                  <rect x="10" y="13" width="5" height="1.5" fill="#FFFFFF" opacity="0.6" />
+                  <rect x="3" y="6" width="11" height="12" rx="1.5" fill="#103F91" />
+                  <text x="5.5" y="15" fill="#FFFFFF" font-family="sans-serif" font-weight="900" font-size="10">W</text>
+                </svg>
+              </div>
+              <!-- Microsoft Excel -->
+              <div class="integration-box" title="Microsoft Excel">
+                <svg viewBox="0 0 24 24" style="width: 28px; height: 28px;">
+                  <rect x="7" y="3.5" width="14" height="17" rx="1.5" fill="#107C41" />
+                  <rect x="10" y="7" width="8" height="1.5" fill="#FFFFFF" opacity="0.6" />
+                  <rect x="10" y="10" width="8" height="1.5" fill="#FFFFFF" opacity="0.6" />
+                  <rect x="10" y="13" width="8" height="1.5" fill="#FFFFFF" opacity="0.6" />
+                  <rect x="13" y="7" width="1.5" height="7.5" fill="#FFFFFF" opacity="0.6" />
+                  <rect x="3" y="6" width="11" height="12" rx="1.5" fill="#0A5C36" />
+                  <text x="6" y="15" fill="#FFFFFF" font-family="sans-serif" font-weight="900" font-size="10">X</text>
+                </svg>
+              </div>
+              <!-- Microsoft PowerPoint -->
+              <div class="integration-box" title="Microsoft PowerPoint">
+                <svg viewBox="0 0 24 24" style="width: 28px; height: 28px;">
+                  <rect x="7" y="3.5" width="14" height="17" rx="1.5" fill="#D24726" />
+                  <circle cx="14" cy="12" r="3.5" fill="#FFFFFF" opacity="0.6" />
+                  <path d="M14 12 L14 8.5 A 3.5 3.5 0 0 1 17.5 12 Z" fill="#FFFFFF" />
+                  <rect x="3" y="6" width="11" height="12" rx="1.5" fill="#B7472A" />
+                  <text x="6" y="15" fill="#FFFFFF" font-family="sans-serif" font-weight="900" font-size="10">P</text>
+                </svg>
+              </div>
+              <!-- Microsoft Teams -->
+              <div class="integration-box" title="Microsoft Teams">
+                <svg viewBox="0 0 24 24" style="width: 28px; height: 28px;">
+                  <circle cx="18" cy="6.5" r="2.5" fill="#7F85F5" />
+                  <path d="M14 13.5a3.5 3.5 0 0 1 7 0v2.5h-7v-2.5z" fill="#5F65E6" />
+                  <circle cx="9" cy="5.5" r="3.5" fill="#7F85F5" />
+                  <path d="M3.5 13a4.5 4.5 0 0 1 9 0v3.5H3.5V13z" fill="#4B53BC" />
+                  <rect x="1" y="9" width="10" height="10" rx="1.5" fill="#3B429F" />
+                  <text x="3.5" y="17.5" fill="#FFFFFF" font-family="sans-serif" font-weight="900" font-size="9">T</text>
+                </svg>
+              </div>
+              <!-- Microsoft SharePoint -->
+              <div class="integration-box" title="Microsoft SharePoint">
+                <svg viewBox="0 0 24 24" style="width: 28px; height: 28px;">
+                  <circle cx="12" cy="7" r="5" fill="#0078D4" />
+                  <circle cx="16" cy="13" r="5" fill="#00B7C3" />
+                  <circle cx="10" cy="16" r="4.5" fill="#038387" />
+                  <rect x="2" y="10" width="10" height="10" rx="1.5" fill="#005A9E" />
+                  <text x="4.5" y="18.5" fill="#FFFFFF" font-family="sans-serif" font-weight="900" font-size="9">S</text>
+                </svg>
+              </div>
+              <!-- SQL/Database (Data) -->
+              <div class="integration-box" title="Database / SQL">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#0078D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px;">
+                  <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                  <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <p class="card-desc">Conecte-se de forma simples aos seus provedores e sistemas de arquivos existentes. Melhore seus fluxos de trabalho interagindo com fontes de dados internas e externas.</p>
+        </div>
+
+        <!-- Card 2: Prompt Library -->
+        <div class="feature-card reveal-scale delay-200">
+          <div>
+            <h3 class="card-title">Biblioteca de Prompts</h3>
+            <div class="prompts-tree">
+              <div class="prompt-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Earnings Comp Analysis</div>
+              <div class="prompt-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="16"/><line x1="15" y1="22" x2="15" y2="16"/><line x1="9" y1="16" x2="15" y2="16"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M8 10h.01"/><path d="M16 10h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/></svg> Public Company Strip Profile</div>
+              <div class="prompt-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Meeting Prep</div>
+              <div class="prompt-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Private Company Profile</div>
+              <div class="prompt-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Financial Sponsor Overview</div>
+            </div>
+          </div>
+          <p class="card-desc">Escolha em nossa biblioteca de prompts especializados voltados a automatizar fluxos complexos de M&amp;A e due diligence do início ao fim.</p>
+        </div>
+
+        <!-- Card 3: Guided Implementation -->
+        <div class="feature-card reveal-scale delay-300">
+          <div>
+            <h3 class="card-title">Implementação Guiada</h3>
+            <div class="guided-visual">
+              <div class="avatars-overlap">
+                <div class="avatar-item" style="background: #E2E8F0;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div class="avatar-item">
+                  <img src="assets/executive_portrait.png" alt="M&A Expert Portrait">
+                </div>
+                <div class="avatar-item" style="background: #0F172A;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+              </div>
+              <div class="guided-badge">
+                <span class="pulse-dot"></span>
+                <span class="guided-badge-text">Suporte Dedicado</span>
+              </div>
+            </div>
+          </div>
+          <p class="card-desc">Onboarding e acompanhamento direto com nosso time para adaptar a IA aos processos da sua firma.</p>
+        </div>
+
+        <!-- Card 4: Custom-Trained Models -->
+        <div class="feature-card reveal-scale delay-100">
+          <div>
+            <h3 class="card-title">Modelos Customizados</h3>
             <div class="cascade-container">
               <div class="cascade-flow">
                 <!-- SVG Connections -->
@@ -2251,89 +2111,104 @@
               </div>
             </div>
           </div>
-          <p class="card-desc">Cruzamos sua tese contra uma base de investidores por estágio, ticket e setor para priorizar quem tem apetite real pela sua rodada.</p>
+          <p class="card-desc">Modelos de linguagem sintonizados para finanças corporativas, treinados com dados qualificados alinhados com o rigor de qualidade do banco de investimento.</p>
         </div>
 
-        <!-- Card 2: Entregamos o pacote do deal pronto -->
+        <!-- Card 5: Governance & Permissions -->
         <div class="feature-card reveal-scale delay-200">
           <div>
-            <h3 class="card-title">Entregamos o material de captação pronto</h3>
-            <div class="prompts-tree">
-              <div class="prompt-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Pitch Deck & Cap Table</div>
-              <div class="prompt-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Modelo Financeiro & Valuation</div>
-              <div class="prompt-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Memorando de Uso de Capital</div>
-              <div class="prompt-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="16"/><line x1="15" y1="22" x2="15" y2="16"/><line x1="9" y1="16" x2="15" y2="16"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M8 10h.01"/><path d="M16 10h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/></svg> Dossiê Fiscal (SPED/ECD/ECF)</div>
-            </div>
-          </div>
-          <p class="card-desc">Geramos com agilidade todo o material da rodada: pitch deck, modelo financeiro, cap table e memorando de uso de capital, prontos para o investidor decidir.</p>
-        </div>
-
-        <!-- Card 3: Antecipamos o risco fiscal da diligência -->
-        <div class="feature-card reveal-scale delay-300">
-          <div>
-            <h3 class="card-title">Antecipamos o risco fiscal antes da diligência do investidor</h3>
+            <h3 class="card-title">Governança e Permissões</h3>
             <div class="panel-gov">
               <div class="gov-stats-grid">
                 <div class="gov-stat-card">
-                  <div class="gov-stat-label">Bases Analisadas</div>
-                  <div class="gov-stat-val">34k <span class="gov-stat-delta">+1.2k</span></div>
+                  <div class="gov-stat-label">Active Users</div>
+                  <div class="gov-stat-val">122 <span class="gov-stat-delta">+5</span></div>
                 </div>
                 <div class="gov-stat-card">
-                  <div class="gov-stat-label">Inconsistências</div>
-                  <div class="gov-stat-val">0 <span class="gov-stat-delta" style="color: #10B981;">✔</span></div>
+                  <div class="gov-stat-label">Queries</div>
+                  <div class="gov-stat-val">3.1k <span class="gov-stat-delta">+235</span></div>
                 </div>
               </div>
               <div class="gov-list-sources">
                 <div class="gov-source-row">
                   <span class="gov-source-name">
-                    <svg class="gov-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                    SPED Fiscal
+                    <svg class="gov-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    Web
                   </span>
-                  <div class="gov-source-bar-bg"><div class="gov-source-bar-fill" style="width: 100%;"></div></div>
+                  <div class="gov-source-bar-bg"><div class="gov-source-bar-fill" style="width: 85%;"></div></div>
                 </div>
                 <div class="gov-source-row">
                   <span class="gov-source-name">
                     <svg class="gov-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                    ECD e ECF
+                    SEC Filings
                   </span>
-                  <div class="gov-source-bar-bg"><div class="gov-source-bar-fill" style="width: 100%;"></div></div>
+                  <div class="gov-source-bar-bg"><div class="gov-source-bar-fill" style="width: 70%;"></div></div>
                 </div>
                 <div class="gov-source-row">
                   <span class="gov-source-name">
-                    <svg class="gov-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                    Passivo Fiscal Oculto
+                    <svg class="gov-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                    Market Data
                   </span>
-                  <div class="gov-source-bar-bg"><div class="gov-source-bar-fill" style="width: 100%;"></div></div>
+                  <div class="gov-source-bar-bg"><div class="gov-source-bar-fill" style="width: 60%;"></div></div>
+                </div>
+                <div class="gov-source-row">
+                  <span class="gov-source-name">
+                    <svg class="gov-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                    Transcripts
+                  </span>
+                  <div class="gov-source-bar-bg"><div class="gov-source-bar-fill" style="width: 45%;"></div></div>
+                </div>
+                <div class="gov-source-row">
+                  <span class="gov-source-name">
+                    <svg class="gov-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                    File Library
+                  </span>
+                  <div class="gov-source-bar-bg"><div class="gov-source-bar-fill" style="width: 30%;"></div></div>
                 </div>
               </div>
             </div>
           </div>
-          <p class="card-desc">Lemos SPED, ECD e ECF e apontamos passivo fiscal oculto com citação de fonte exata, antes que ele trave o fechamento da sua rodada.</p>
+          <p class="card-desc">Controle granular de acesso de usuários, logs de auditoria detalhados e políticas de segurança customizadas para total conformidade e sigilo dos deals.</p>
         </div>
 
-        <!-- Card 4: A IA executa, o banker sênior assina -->
-        <div class="feature-card reveal-scale delay-100">
+        <!-- Card 6: Single Tenant Deployment -->
+        <div class="feature-card reveal-scale delay-300">
           <div>
-            <h3 class="card-title">A IA executa, o banker sênior revisa</h3>
-            <div class="guided-visual">
-              <div class="avatars-overlap">
-                <div class="avatar-item" style="background: #E2E8F0;">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <h3 class="card-title">Instância Dedicada</h3>
+            <div class="infra-diagram-container">
+              <div class="infra-grid-net">
+                <!-- SVG Connections -->
+                <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+                  <line x1="23" y1="18" x2="90" y2="50" stroke="#E2E8F0" stroke-width="1" class="infra-link-line" />
+                  <line x1="90" y1="18" x2="90" y2="50" stroke="#E2E8F0" stroke-width="1" class="infra-link-line" />
+                  <line x1="157" y1="18" x2="90" y2="50" stroke="#E2E8F0" stroke-width="1" class="infra-link-line" />
+                  <line x1="23" y1="50" x2="90" y2="50" stroke="#E2E8F0" stroke-width="1" class="infra-link-line" />
+                  <line x1="157" y1="50" x2="90" y2="50" stroke="#E2E8F0" stroke-width="1" class="infra-link-line" />
+                  <line x1="23" y1="82" x2="90" y2="50" stroke="#E2E8F0" stroke-width="1" class="infra-link-line" />
+                  <line x1="90" y1="82" x2="90" y2="50" stroke="#E2E8F0" stroke-width="1" class="infra-link-line" />
+                  <line x1="157" y1="82" x2="90" y2="50" stroke="#E2E8F0" stroke-width="1" class="infra-link-line" />
+                </svg>
+
+                <!-- Outer Nodes -->
+                <div class="infra-grid-box" style="top: 5px; left: 10px;"></div>
+                <div class="infra-grid-box" style="top: 5px; left: 77px;"></div>
+                <div class="infra-grid-box" style="top: 5px; left: 144px;"></div>
+                
+                <div class="infra-grid-box" style="top: 37px; left: 10px;"></div>
+                <div class="infra-grid-box hub" style="top: 34px; left: 74px;">
+                  <img src="assets/logo-eva-black.png" alt="EVA Logo" style="width: 16px; height: 16px; filter: brightness(0) invert(1); object-fit: contain;" />
                 </div>
-                <div class="avatar-item">
-                  <img src="assets/executive_portrait.png" alt="M&A Expert Portrait">
+                <div class="infra-grid-box" style="top: 37px; left: 144px;"></div>
+                
+                <div class="infra-grid-box" style="top: 69px; left: 10px;"></div>
+                <div class="infra-grid-box" style="top: 69px; left: 77px;"></div>
+                <div class="infra-grid-box" style="top: 69px; left: 144px;">
+                  <div class="infra-dot-active"></div>
                 </div>
-                <div class="avatar-item" style="background: #0F172A;">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                </div>
-              </div>
-              <div class="guided-badge">
-                <span class="pulse-dot"></span>
-                <span class="guided-badge-text">Suporte Dedicado</span>
               </div>
             </div>
           </div>
-          <p class="card-desc">A IA faz o trabalho pesado de higiene fiscal, modelagem e geração de material com velocidade, enquanto um banker sênior revisa a qualidade de tudo antes de chegar até você e antes da assinatura.</p>
+          <p class="card-desc">Hospedagem em nuvem privada dedicada (Single Tenant) isolada para garantir a segurança integral, controle total da infraestrutura e dos dados confidenciais.</p>
         </div>
 
       </div>
@@ -2345,23 +2220,23 @@
     <div class="container">
       <div class="how-header reveal">
         <p class="eyebrow">Como funciona</p>
-        <h2 class="section-title">Do material ao fechamento, sem <em class="text-gradient-blue">intermediários.</em></h2>
+        <h2 class="section-title">Do comando ao entregável, sem <em>intermediários</em>.</h2>
       </div>
       <div class="how-grid">
         <div class="reveal-scale delay-100">
-          <p class="how-step-label">01 Mandato</p>
-          <h3 class="how-step-title">Você nos conta a rodada</h3>
-          <p class="how-step-desc">Estágio, quanto quer captar e a tese de uso do capital. Mandato de um lado só, sem conflito.</p>
+          <p class="how-step-label">01, Input</p>
+          <h3 class="how-step-title">Você define o objetivo</h3>
+          <p class="how-step-desc">Via plataforma web. EVA entende contexto, não só comandos.</p>
         </div>
         <div class="reveal-scale delay-200">
-          <p class="how-step-label">02 Preparação e investidor</p>
-          <h3 class="how-step-title">A IA prepara o material e mapeia o investidor certo</h3>
-          <p class="how-step-desc">Higiene fiscal, pitch deck, modelo financeiro, cap table e memorando de uso de capital, cruzados contra a base de investidores por tese e estágio.</p>
+          <p class="how-step-label">02, Execução</p>
+          <h3 class="how-step-title">EVA planeja e executa</h3>
+          <p class="how-step-desc">Divide o trabalho em subtarefas, aciona agentes especializados em paralelo e executa de forma assíncrona.</p>
         </div>
         <div class="reveal-scale delay-300">
-          <p class="how-step-label">03 Revisão e fechamento</p>
-          <h3 class="how-step-title">O banker revisa, e você fecha com o investidor</h3>
-          <p class="how-step-desc">Um banker sênior revisa a qualidade de tudo antes da assinatura. A EVA aciona a advocacia para o instrumento (SAFE, mútuo conversível, contrato de subscrição).</p>
+          <p class="how-step-label">03, Entrega</p>
+          <h3 class="how-step-title">Você recebe o entregável pronto</h3>
+          <p class="how-step-desc">PPT, PDF, DOCX ou Excel, formatado e pronto para ir para o cliente.</p>
         </div>
       </div>
     </div>
@@ -2372,168 +2247,88 @@
     <div class="container">
       <div class="whom-header reveal">
         <p class="eyebrow">Para quem é</p>
-        <h2 class="section-title">Construída para quem não tem <em class="text-gradient-blue">tempo a perder.</em></h2>
+        <h2 class="section-title">Construída para quem não tem <em>tempo a perder</em>.</h2>
       </div>
       <div class="whom-grid">
         <div class="whom-card reveal-scale delay-100">
           <div>
-            <p class="whom-role">Founders · Sócios · Fundos</p>
-            <h3 class="whom-title">Quem quer vender</h3>
-            <p class="whom-subtitle">Founders, sócios e fundos com tese de saída.</p>
+            <p class="whom-role">Investment Banking · PE · VC · M&amp;A</p>
+            <h3 class="whom-title">Times de Deals</h3>
+            <p class="whom-subtitle">Onde a EVA nasceu. Exigência máxima de qualidade institucional, velocidade e confidencialidade.</p>
             <ul class="whom-list">
-              <li>→ Dossiê fiscal antecipado para proteger o valuation</li>
-              <li>→ Pacote de CIM e Teaser gerados em alta velocidade</li>
-              <li>→ Grafo de contrapartes para achar o comprador estratégico ideal</li>
-              <li>→ Muralha de informação separada para sigilo absoluto</li>
+              <li>→ Valuation e Pitch Deck em minutos</li>
+              <li>→ Due diligence em horas</li>
+              <li>→ Análise de comps automatizada</li>
+              <li>→ Instância dedicada</li>
             </ul>
           </div>
-          <p class="whom-message">Vender sua empresa pelo melhor preço, sem vazamento de informação.</p>
+          <p class="whom-message">Dobrar sua capacidade de deals sem contratar mais uma pessoa.</p>
         </div>
         <div class="whom-card reveal-scale delay-200">
           <div>
-            <p class="whom-role">Private Equity · Corporações · Family Offices</p>
-            <h3 class="whom-title">Quem quer comprar</h3>
-            <p class="whom-subtitle">Private Equity, serial acquirers, family offices e M&amp;A corporativo.</p>
+            <p class="whom-role">Expansão · Jurídico · Consultoria · Corporativo</p>
+            <h3 class="whom-title">Empresas da Economia Real</h3>
+            <p class="whom-subtitle">Qualquer empresa com alto volume de análise, documentação e processos críticos.</p>
             <ul class="whom-list">
-              <li>→ Screening automatizado de targets alinhados à tese</li>
-              <li>→ Due diligence ágil de passivos fiscais (SPED e ECD)</li>
-              <li>→ Análise profunda de comparáveis de mercado</li>
-              <li>→ Muralha de informação separada sem conflitos de interesse</li>
+              <li>→ Relatórios e análises em minutos</li>
+              <li>→ Documentos board-ready</li>
+              <li>→ Pesquisa avançada em bases internas</li>
+              <li>→ Automação de processos repetitivos</li>
             </ul>
           </div>
-          <p class="whom-message">Encontrar e executar aquisições de forma acelerada e segura.</p>
+          <p class="whom-message">Inteligência aplicada ao seu processo, sem a curva de aprendizado de IA genérica.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── 8. FAQ (Estilo Tropicalia) ── -->
-  <section class="section faq" id="faq">
+  <!-- ── 8. PROOF ── -->
+  <section class="section proof">
     <div class="container reveal">
-      <div class="faq-card">
-        <div class="faq-header-centered">
-          <p class="eyebrow">FAQ</p>
-          <h2 class="faq-main-title">Perguntas<br><em class="text-gradient-blue">frequentes</em></h2>
-        </div>
-        <div class="faq-list">
-          <div class="faq-item">
-            <button class="faq-question">
-              <span>A IA realmente executa a captação sozinha?</span>
-              <span class="faq-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-              </span>
-            </button>
-            <div class="faq-answer-wrapper">
-              <div class="faq-answer">
-                <p>Não. A IA faz o trabalho pesado: higiene fiscal, modelagem financeira, geração de material e mapeamento de investidor. Um banker sênior revisa cada entregável antes de chegar até você e antes da assinatura. É velocidade de IA com revisão humana em toda entrega, nunca "sem humanos".</p>
-              </div>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question">
-              <span>Vocês representam meu investidor também?</span>
-              <span class="faq-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-              </span>
-            </button>
-            <div class="faq-answer-wrapper">
-              <div class="faq-answer">
-                <p>Não. O mandato da EVA é de um lado só: representamos a empresa que capta, não o investidor no mesmo processo. Muralha de informação por mandato, isso é estrutural, não uma política de boa vontade.</p>
-              </div>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question">
-              <span>Meus documentos e dados estão seguros?</span>
-              <span class="faq-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-              </span>
-            </button>
-            <div class="faq-answer-wrapper">
-              <div class="faq-answer">
-                <p>SOC 2 Type II e LGPD ativos. Dados nunca são usados para treinar modelo, nunca compartilhados entre clientes, acesso só via link com expiração de 1 hora.</p>
-              </div>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question">
-              <span>Quanto tempo leva do mandato até o investidor certo?</span>
-              <span class="faq-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-              </span>
-            </button>
-            <div class="faq-answer-wrapper">
-              <div class="faq-answer">
-                <p>Depende do estágio e da tese, geralmente semanas. A IA cruza sua rodada contra a base de investidores assim que o mandato começa.</p>
-              </div>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question">
-              <span>Como a EVA antecipa o risco fiscal antes da diligência do investidor?</span>
-              <span class="faq-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-              </span>
-            </button>
-            <div class="faq-answer-wrapper">
-              <div class="faq-answer">
-                <p>Lemos SPED, ECD e ECF e apontamos passivo fiscal oculto com citação de fonte exata, antes que ele apareça na diligência e trave o fechamento da rodada.</p>
-              </div>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question">
-              <span>Quanto custa?</span>
-              <span class="faq-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-              </span>
-            </button>
-            <div class="faq-answer-wrapper">
-              <div class="faq-answer">
-                <p>Varia com o estágio e o tamanho da rodada. Fale com a gente pelo WhatsApp e mostramos a estrutura de preço pro seu caso.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <p class="eyebrow">Resultado real</p>
+      <blockquote class="proof-quote">
+        "A EVA desbloqueou completamente nosso time ao dobrar nossa capacidade. <em>Estamos no caminho de dobrar nossa quantidade de deals no próximo ano com o mesmo headcount.</em>"
+      </blockquote>
+      <p class="proof-attribution">Principal, Banco de Investimento Middle Market</p>
     </div>
   </section>
 
-  <!-- ── LINHA DEGRADÊ AZUL ── -->
-  <div class="blue-gradient-line"></div>
+  <!-- ── 9. CTA FINAL ── -->
+  <section class="cta-final" id="cta" style="position: relative; overflow: hidden;">
+    <div class="grid-pattern-dark"></div>
+    <div class="container reveal">
+      <h2>Pronto para operar em outro <em>nível</em>?</h2>
+      <p class="cta-final-sub">Agende uma demonstração e veja a EVA executando um caso real do seu setor.</p>
+      <a href="https://api.whatsapp.com/send?phone=5519999560806&text=Ol%C3%A1%2C%20tenho%20interesse%20ao%20acesso%20antecipado%20da%20EVA." class="btn-inverted" target="_blank" rel="noopener noreferrer">Agendar Demo</a>
+      <p class="cta-trust">Sem compromisso · Resposta em até 24 horas · SOC 2 Type II · LGPD</p>
+    </div>
+  </section>
 
   <!-- ── 10. FOOTER ── -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col brand-col">
-          <img src="assets/logo-eva-black.png" alt="EVA" class="footer-logo" />
+      <div class="footer-inner">
+        <div class="footer-left">
+          <span class="footer-wordmark">EVA</span>
+          <span>© 2026 EVA. Todos os direitos reservados.</span>
         </div>
-        <div class="footer-col links-col">
-          <span class="footer-col-title">Resources</span>
-          <div class="footer-col-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of use</a>
-          </div>
+        <div class="footer-links">
+          <a href="#features">Produto</a>
+          <a href="#whom">Para quem</a>
+          <a href="https://api.whatsapp.com/send?phone=5519999560806&text=Ol%C3%A1%2C%20tenho%20interesse%20ao%20acesso%20antecipado%20da%20EVA." target="_blank" rel="noopener noreferrer">Contato</a>
+          <a href="#">Política de Privacidade</a>
         </div>
-        <div class="footer-col socials-col">
-          <span class="footer-col-title">Socials</span>
-          <div class="footer-social-icons">
-            <a href="https://www.linkedin.com/company/evapayy" class="social-icon-link linkedin-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="16" cy="16" r="16" fill="black"/>
-                <path d="M11.5 11h3v10h-3zM13 7.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zM16.5 11h2.8v1.4h.1c.4-.7 1.3-1.6 2.8-1.6 3 0 3.5 2 3.5 4.6V21h-3v-4.7c0-1.1 0-2.6-1.6-2.6-1.6 0-1.8 1.2-1.8 2.5V21h-3V11z" fill="white"/>
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-divider"></div>
-      <div class="footer-bottom">
-        <p class="footer-copyright">© 2026 EVA Capital. Todos os direitos reservados. Desenvolvido com alma brasileira.</p>
       </div>
     </div>
   </footer>
+
+  <!-- ── EVA STAMP ── -->
+  <section class="eva-stamp reveal-scale" aria-hidden="true" style="border-top: 1px solid var(--border-light);">
+    <div class="eva-stamp-inner">
+      <h2 class="eva-stamp-text">EVA</h2>
+      <p class="eva-stamp-tag">Building Intelligence for the Real Economy.</p>
+    </div>
+  </section>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -2548,7 +2343,53 @@
         });
       }, { threshold: 0.15 });
       revealElements.forEach(el => revealObserver.observe(el));
-      // ── 2. CARD MOUSE GLOW EFFECT ──
+
+      // ── 2. METRICS COUNT-UP ──
+      const metrics = document.querySelectorAll('.metric-value');
+      const metricsObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const valEl = entry.target;
+            const targetValText = valEl.innerText;
+            const numberVal = parseFloat(targetValText);
+            const hasMin = targetValText.includes('min');
+            const hasX = targetValText.includes('×');
+            const hasPercent = targetValText.includes('%');
+            
+            let start = 0;
+            const duration = 1500;
+            const startTime = performance.now();
+            
+            function updateNumber(now) {
+              const elapsed = now - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+              const ease = progress * (2 - progress); // Ease out quad
+              const current = start + ease * (numberVal - start);
+              
+              if (hasX) {
+                valEl.innerText = current.toFixed(1).replace('.0', '') + '×';
+              } else if (hasPercent) {
+                valEl.innerText = Math.round(current) + '%';
+              } else if (hasMin) {
+                valEl.innerText = Math.round(current) + ' min';
+              } else {
+                valEl.innerText = Math.round(current);
+              }
+              
+              if (progress < 1) {
+                requestAnimationFrame(updateNumber);
+              } else {
+                valEl.innerText = targetValText;
+              }
+            }
+            requestAnimationFrame(updateNumber);
+            observer.unobserve(valEl);
+          }
+        });
+      }, { threshold: 0.5 });
+      metrics.forEach(m => metricsObserver.observe(m));
+
+      // ── 3. CARD MOUSE GLOW EFFECT ──
       const cards = document.querySelectorAll('.problem-card, .feature-card, .whom-card');
       cards.forEach(card => {
         card.addEventListener('mousemove', e => {
@@ -2560,7 +2401,7 @@
         });
       });
 
-      // ── 3. EVA ANALYTICS CHART ──
+      // ── 4. EVA ANALYTICS CHART ──
       (function() {
         const datasets = {
           '1D': {
@@ -2698,20 +2539,18 @@
         window.addEventListener('resize', () => drawChart(currentPeriod));
       })();
 
-      // ── 4. EVA CHAT INTERACTION ──
+      // ── 5. EVA CHAT INTERACTION ──
       (function() {
         const input    = document.getElementById('evaChatInput');
         const sendBtn  = document.getElementById('evaSendBtn');
         const messages = document.getElementById('evaChatMessages');
 
-        if (!input || !sendBtn || !messages) return;
-
         const responses = [
           "Baseado nos dados do mês, o setor de <strong>Logística & Transporte</strong> representou 43% do volume de deals. Posso detalhar os múltiplos de mercado para esse setor.",
-          "A due diligence fiscal levou <strong>2,3 dias</strong> por deal este mês, representando uma redução de 38% no tempo de análise. O ganho de velocidade veio da análise de SPED.",
-          "Identifico <strong>3 oportunidades de follow-up</strong> com targets do buy-side que receberam materiais do deal há mais de 7 dias mas ainda não responderam.",
+          "A due diligence média levou <strong>2,3 dias</strong> por deal este mês — 38% abaixo da média histórica do seu time. O aumento de velocidade veio do módulo de análise de SPED.",
+          "Identifico <strong>3 oportunidades de follow-up</strong> com targets que interagiram com materiais CIM enviados há mais de 7 dias mas ainda não responderam.",
           "O pipeline atual tem <strong>R$ 480M</strong> em valor agregado de deals em análise. Qual deal você quer aprofundar?",
-          "EVA processou os documentos fiscais da target. Identifiquei 2 inconsistências na ECF que podem impactar o valuation final."
+          "EVA processou <strong>12 documentos jurídicos</strong> esta semana. Encontrei 2 cláusulas de não-concorrência que merecem atenção antes do signing."
         ];
         let respIdx = 0;
 
@@ -2799,37 +2638,15 @@
 
         sendBtn.addEventListener('click', send);
         input.addEventListener('keydown', e => { if (e.key === 'Enter') send(); });
-      })();
 
-      // Sidebar icon hover toggle
-      document.querySelectorAll('.eva-sidebar-icon').forEach(icon => {
-        icon.addEventListener('click', () => {
-          document.querySelectorAll('.eva-sidebar-icon').forEach(i => i.classList.remove('active'));
-          icon.classList.add('active');
-        });
-      });
-
-      // ── 5. FAQ ACCORDION ──
-      document.querySelectorAll('.faq-question').forEach(button => {
-        button.addEventListener('click', () => {
-          const currentItem = button.closest('.faq-item');
-          const isActive = currentItem.classList.contains('active');
-          
-          // Close all other active items
-          document.querySelectorAll('.faq-item.active').forEach(item => {
-            if (item !== currentItem) {
-              item.classList.remove('active');
-            }
+        // Sidebar icon hover toggle
+        document.querySelectorAll('.eva-sidebar-icon').forEach(icon => {
+          icon.addEventListener('click', () => {
+            document.querySelectorAll('.eva-sidebar-icon').forEach(i => i.classList.remove('active'));
+            icon.classList.add('active');
           });
-          
-          // Toggle current item
-          if (isActive) {
-            currentItem.classList.remove('active');
-          } else {
-            currentItem.classList.add('active');
-          }
         });
-      });
+      })();
 
     });
   </script>
