@@ -320,7 +320,140 @@
     .nav-right {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 16px;
+    }
+
+    /* ── LANGUAGE SWITCHER ── */
+    .lang-switcher-wrapper {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      z-index: 100;
+      padding-bottom: 12px;
+      margin-bottom: -12px;
+    }
+
+    .lang-btn-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #0F172A;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 0;
+      outline: none;
+    }
+
+    .lang-btn-circle:hover,
+    .lang-switcher-wrapper:hover .lang-btn-circle {
+      transform: translateY(-2px) scale(1.06);
+      border-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.25);
+    }
+
+    .lang-btn-circle:active {
+      transform: translateY(0) scale(0.96);
+    }
+
+    .lang-flag-current {
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .lang-switcher-wrapper:hover .lang-flag-current {
+      transform: rotate(10deg);
+    }
+
+    .lang-code-badge {
+      position: absolute;
+      bottom: -2px;
+      right: -2px;
+      background: #0284C7;
+      color: #FFFFFF;
+      font-size: 9px;
+      font-weight: 800;
+      padding: 1px 4px;
+      border-radius: 6px;
+      border: 1.5px solid #0F172A;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .lang-dropdown {
+      position: absolute;
+      top: calc(100% - 4px);
+      right: 0;
+      background: #0F172A;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 14px;
+      padding: 6px;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 185px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px) scale(0.95);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    .lang-switcher-wrapper.active .lang-dropdown,
+    .lang-switcher-wrapper:hover .lang-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .lang-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: none;
+      background: transparent;
+      color: #94A3B8;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      width: 100%;
+      text-align: left;
+    }
+
+    .lang-option:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #FFFFFF;
+    }
+
+    .lang-option.active {
+      background: rgba(2, 132, 199, 0.2);
+      color: #38BDF8;
+      font-weight: 600;
+    }
+
+    .lang-option .lang-flag-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      flex-shrink: 0;
     }
 
     .nav-links {
@@ -2142,13 +2275,70 @@
         <img src="assets/logo-eva-black.png" alt="EVA" class="logo-mark" />
       </a>
       <div class="nav-right">
-        <a href="https://api.whatsapp.com/send?phone=5519999560806&text=Ol%C3%A1%2C%20estou%20buscando%20investimento%20para%20a%20minha%20startup!" class="nav-btn-tropicalia" target="_blank" rel="noopener noreferrer">
-          <span class="btn-text-default">Contact Us</span>
+        <a href="https://w.app/evabr" class="nav-btn-tropicalia" target="_blank" rel="noopener noreferrer" data-wa-link>
+          <span class="btn-text-default" data-i18n="nav.contact">Contact Us</span>
           <span class="ripple-layer layer-1"></span>
           <span class="ripple-layer layer-2"></span>
           <span class="ripple-layer layer-3"></span>
-          <span class="btn-text-hover">Contact Us</span>
+          <span class="btn-text-hover" data-i18n="nav.contact">Contact Us</span>
         </a>
+
+        <!-- Circular Language Switcher -->
+        <div class="lang-switcher-wrapper">
+          <button type="button" class="lang-btn-circle" id="langBtnCircle" aria-label="Alternar idioma / Switch language" title="Português / English">
+            <span class="lang-flag-current" id="langFlagCurrent">
+              <svg class="lang-flag-icon" viewBox="0 0 512 512" width="22" height="22">
+                <rect width="512" height="512" fill="#009b3a"/>
+                <polygon points="256,70 472,256 256,442 40,256" fill="#fedf00"/>
+                <circle cx="256" cy="256" r="105" fill="#002776"/>
+                <path d="M156,270 Q256,230 356,270" stroke="#ffffff" stroke-width="14" fill="none"/>
+              </svg>
+            </span>
+            <span class="lang-code-badge" id="langCodeBadge">PT</span>
+          </button>
+          <div class="lang-dropdown" id="langDropdown">
+            <button type="button" class="lang-option active" data-lang="pt">
+              <svg class="lang-flag-icon" viewBox="0 0 512 512" width="20" height="20">
+                <rect width="512" height="512" fill="#009b3a"/>
+                <polygon points="256,70 472,256 256,442 40,256" fill="#fedf00"/>
+                <circle cx="256" cy="256" r="105" fill="#002776"/>
+                <path d="M156,270 Q256,230 356,270" stroke="#ffffff" stroke-width="14" fill="none"/>
+              </svg>
+              <span>Brasil (PT)</span>
+            </button>
+            <button type="button" class="lang-option" data-lang="en">
+              <svg class="lang-flag-icon" viewBox="0 0 512 512" width="20" height="20">
+                <clipPath id="us-circle-opt"><circle cx="256" cy="256" r="256"/></clipPath>
+                <g clip-path="url(#us-circle-opt)">
+                  <rect width="512" height="512" fill="#bb133e"/>
+                  <path d="M0,39.38h512v39.38H0z M0,118.15h512v39.38H0z M0,196.92h512v39.38H0z M0,275.69h512v39.38H0z M0,354.46h512v39.38H0z M0,433.23h512v39.38H0z" fill="#fff"/>
+                  <rect width="230" height="275.7" fill="#002147"/>
+                  <g fill="#fff">
+                    <circle cx="38" cy="34" r="9"/><circle cx="115" cy="34" r="9"/><circle cx="192" cy="34" r="9"/>
+                    <circle cx="76" cy="68" r="9"/><circle cx="153" cy="68" r="9"/>
+                    <circle cx="38" cy="102" r="9"/><circle cx="115" cy="102" r="9"/><circle cx="192" cy="102" r="9"/>
+                    <circle cx="76" cy="136" r="9"/><circle cx="153" cy="136" r="9"/>
+                    <circle cx="38" cy="170" r="9"/><circle cx="115" cy="170" r="9"/><circle cx="192" cy="170" r="9"/>
+                    <circle cx="76" cy="204" r="9"/><circle cx="153" cy="204" r="9"/>
+                    <circle cx="38" cy="238" r="9"/><circle cx="115" cy="238" r="9"/><circle cx="192" cy="238" r="9"/>
+                  </g>
+                </g>
+              </svg>
+              <span>Estados Unidos (EN)</span>
+            </button>
+            <button type="button" class="lang-option" data-lang="es">
+              <svg class="lang-flag-icon" viewBox="0 0 512 512" width="20" height="20">
+                <clipPath id="es-circle-opt"><circle cx="256" cy="256" r="256"/></clipPath>
+                <g clip-path="url(#es-circle-opt)">
+                  <rect width="512" height="128" fill="#aa152b"/>
+                  <rect y="128" width="512" height="256" fill="#f1bf00"/>
+                  <rect y="384" width="512" height="128" fill="#aa152b"/>
+                </g>
+              </svg>
+              <span>España (ES)</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
@@ -2157,22 +2347,22 @@
   <section class="hero" style="position: relative; overflow: hidden;">
     <div class="grid-pattern"></div>
     <h1 class="reveal delay-100 hero-headline">AI-run capital raising.<br><span class="text-gradient-blue">Built to close.</span></h1>
-    <p class="hero-sub reveal delay-300">💰 A rodada inteira, você só assina</p>
+    <p class="hero-sub reveal delay-300" data-i18n="hero.sub">💰 A rodada inteira, você só assina</p>
     <div class="backed-by reveal delay-400">
-      <span class="backed-by-label">Backed by:</span>
+      <span class="backed-by-label" data-i18n="hero.backed">Backed by:</span>
       <div class="backed-by-logos">
         <img src="assets/nvidia-logo.png" alt="NVIDIA" class="backed-by-logo backed-by-logo--nvidia" width="512" height="278" loading="lazy" decoding="async" />
         <img src="assets/aws-startups-logo.png" alt="AWS Startups" class="backed-by-logo backed-by-logo--aws" width="951" height="475" loading="lazy" decoding="async" />
       </div>
     </div>
     <div class="hero-cta reveal delay-500">
-      <a href="https://api.whatsapp.com/send?phone=5519999560806&text=Ol%C3%A1%2C%20estou%20buscando%20investimento%20para%20a%20minha%20startup!" class="btn-primary" target="_blank" rel="noopener noreferrer">Falar sobre sua rodada</a>
-      <a href="#how" class="btn-ghost">Ver como funciona</a>
+      <a href="https://w.app/evabr" class="btn-primary" target="_blank" rel="noopener noreferrer" data-i18n="hero.cta_primary" data-wa-link>Falar sobre sua rodada</a>
+      <a href="#how" class="btn-ghost" data-i18n="hero.cta_ghost">Ver como funciona</a>
     </div>
     <!-- Vídeo Hero -->
     <video autoplay loop playsinline controls class="hero-visual reveal-scale delay-300" style="margin: 32px auto 0;">
       <source src="assets/Video%20hero.mp4" type="video/mp4">
-      Seu navegador não suporta vídeos HTML5.
+      <span data-i18n="hero.video_fallback">Seu navegador não suporta vídeos HTML5.</span>
     </video>
   </section>
 
@@ -2181,29 +2371,29 @@
   <section class="section problem">
     <div class="container">
       <div class="problem-header reveal">
-        <p class="eyebrow">O problema</p>
-        <h2 class="section-title">Captar uma rodada é <em class="text-gradient-blue">lento, caro e incerto.</em></h2>
+        <p class="eyebrow" data-i18n="problem.eyebrow">O problema</p>
+        <h2 class="section-title" data-i18n="problem.title">Captar uma rodada é <em class="text-gradient-blue">lento, caro e incerto.</em></h2>
       </div>
       <div class="problem-grid">
         <div class="problem-card reveal-scale delay-100">
           <div class="card-number">01</div>
           <div>
-            <h3 class="card-title">Achar o investidor certo depende de relacionamento e sorte</h3>
-            <p class="card-desc">Cruzar sua tese contra o investidor com apetite real é limitado por redes de relacionamentos pessoais e processos lentos.</p>
+            <h3 class="card-title" data-i18n="problem.card1_title">Achar o investidor certo depende de relacionamento e sorte</h3>
+            <p class="card-desc" data-i18n="problem.card1_desc">Cruzar sua tese contra o investidor com apetite real é limitado por redes de relacionamentos pessoais e processos lentos.</p>
           </div>
         </div>
         <div class="problem-card reveal-scale delay-200">
           <div class="card-number">02</div>
           <div>
-            <h3 class="card-title">Produzir o material consome semanas</h3>
-            <p class="card-desc">Elaborar pitch deck, modelo financeiro, cap table e memorando de uso de capital exige centenas de horas que podiam ir para a conversa com investidor.</p>
+            <h3 class="card-title" data-i18n="problem.card2_title">Produzir o material consome semanas</h3>
+            <p class="card-desc" data-i18n="problem.card2_desc">Elaborar pitch deck, modelo financeiro, cap table e memorando de uso de capital exige centenas de horas que podiam ir para a conversa com investidor.</p>
           </div>
         </div>
         <div class="problem-card reveal-scale delay-300">
           <div class="card-number">03</div>
           <div>
-            <h3 class="card-title">A diligência do investidor trava o fechamento na reta final</h3>
-            <p class="card-desc">Passivos fiscais não mapeados aparecem no final do processo, travando a rodada ou derrubando o valuation negociado.</p>
+            <h3 class="card-title" data-i18n="problem.card3_title">A diligência do investidor trava o fechamento na reta final</h3>
+            <p class="card-desc" data-i18n="problem.card3_desc">Passivos fiscais não mapeados aparecem no final do processo, travando a rodada ou derrubando o valuation negociado.</p>
           </div>
         </div>
       </div>
@@ -2214,8 +2404,8 @@
   <section class="section features" id="features">
     <div class="container">
       <div class="features-header reveal">
-        <p class="eyebrow">O que fazemos</p>
-        <h2 class="section-title">Uma firma que executa a captação inteira, <em class="text-gradient-blue">do material ao fechamento.</em></h2>
+        <p class="eyebrow" data-i18n="features.eyebrow">O que fazemos</p>
+        <h2 class="section-title" data-i18n="features.title">Uma firma que executa a captação inteira, <em class="text-gradient-blue">do material ao fechamento.</em></h2>
       </div>
       
       <div class="platform-grid">
@@ -2223,7 +2413,7 @@
         <!-- Card 1: Encontramos a contraparte certa -->
         <div class="feature-card reveal-scale delay-100">
           <div>
-            <h3 class="card-title">Encontramos o investidor certo</h3>
+            <h3 class="card-title" data-i18n="features.card1_title">Encontramos o investidor certo</h3>
             <div class="cascade-container">
               <div class="cascade-flow">
                 <!-- SVG Connections -->
@@ -2251,35 +2441,35 @@
               </div>
             </div>
           </div>
-          <p class="card-desc">Cruzamos sua tese contra uma base de investidores por estágio, ticket e setor para priorizar quem tem apetite real pela sua rodada.</p>
+          <p class="card-desc" data-i18n="features.card1_desc">Cruzamos sua tese contra uma base de investidores por estágio, ticket e setor para priorizar quem tem apetite real pela sua rodada.</p>
         </div>
 
         <!-- Card 2: Entregamos o pacote do deal pronto -->
         <div class="feature-card reveal-scale delay-200">
           <div>
-            <h3 class="card-title">Entregamos o material de captação pronto</h3>
+            <h3 class="card-title" data-i18n="features.card2_title">Entregamos o material de captação pronto</h3>
             <div class="prompts-tree">
-              <div class="prompt-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Pitch Deck & Cap Table</div>
-              <div class="prompt-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Modelo Financeiro & Valuation</div>
-              <div class="prompt-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Memorando de Uso de Capital</div>
-              <div class="prompt-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="16"/><line x1="15" y1="22" x2="15" y2="16"/><line x1="9" y1="16" x2="15" y2="16"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M8 10h.01"/><path d="M16 10h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/></svg> Dossiê Fiscal (SPED/ECD/ECF)</div>
+              <div class="prompt-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> <span data-i18n="features.prompt1">Pitch Deck & Cap Table</span></div>
+              <div class="prompt-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> <span data-i18n="features.prompt2">Modelo Financeiro & Valuation</span></div>
+              <div class="prompt-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> <span data-i18n="features.prompt3">Memorando de Uso de Capital</span></div>
+              <div class="prompt-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="16"/><line x1="15" y1="22" x2="15" y2="16"/><line x1="9" y1="16" x2="15" y2="16"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M8 10h.01"/><path d="M16 10h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/></svg> <span data-i18n="features.source4">Dossiê Fiscal (SPED/ECD/ECF)</span></div>
             </div>
           </div>
-          <p class="card-desc">Geramos com agilidade todo o material da rodada: pitch deck, modelo financeiro, cap table e memorando de uso de capital, prontos para o investidor decidir.</p>
+          <p class="card-desc" data-i18n="features.card2_desc">Geramos com agilidade todo o material da rodada: pitch deck, modelo financeiro, cap table e memorando de uso de capital, prontos para o investidor decidir.</p>
         </div>
 
         <!-- Card 3: Antecipamos o risco fiscal da diligência -->
         <div class="feature-card reveal-scale delay-300">
           <div>
-            <h3 class="card-title">Antecipamos o risco fiscal antes da diligência do investidor</h3>
+            <h3 class="card-title" data-i18n="features.card3_title">Antecipamos o risco fiscal antes da diligência do investidor</h3>
             <div class="panel-gov">
               <div class="gov-stats-grid">
                 <div class="gov-stat-card">
-                  <div class="gov-stat-label">Bases Analisadas</div>
+                  <div class="gov-stat-label" data-i18n="features.stat1_label">Bases Analisadas</div>
                   <div class="gov-stat-val">34k <span class="gov-stat-delta">+1.2k</span></div>
                 </div>
                 <div class="gov-stat-card">
-                  <div class="gov-stat-label">Inconsistências</div>
+                  <div class="gov-stat-label" data-i18n="features.stat2_label">Inconsistências</div>
                   <div class="gov-stat-val">0 <span class="gov-stat-delta" style="color: #10B981;">✔</span></div>
                 </div>
               </div>
@@ -2287,34 +2477,34 @@
                 <div class="gov-source-row">
                   <span class="gov-source-name">
                     <svg class="gov-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                    SPED Fiscal
+                    <span data-i18n="features.source1">SPED Fiscal</span>
                   </span>
                   <div class="gov-source-bar-bg"><div class="gov-source-bar-fill" style="width: 100%;"></div></div>
                 </div>
                 <div class="gov-source-row">
                   <span class="gov-source-name">
                     <svg class="gov-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                    ECD e ECF
+                    <span data-i18n="features.source2">ECD e ECF</span>
                   </span>
                   <div class="gov-source-bar-bg"><div class="gov-source-bar-fill" style="width: 100%;"></div></div>
                 </div>
                 <div class="gov-source-row">
                   <span class="gov-source-name">
                     <svg class="gov-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                    Passivo Fiscal Oculto
+                    <span data-i18n="features.source3">Passivo Fiscal Oculto</span>
                   </span>
                   <div class="gov-source-bar-bg"><div class="gov-source-bar-fill" style="width: 100%;"></div></div>
                 </div>
               </div>
             </div>
           </div>
-          <p class="card-desc">Lemos SPED, ECD e ECF e apontamos passivo fiscal oculto com citação de fonte exata, antes que ele trave o fechamento da sua rodada.</p>
+          <p class="card-desc" data-i18n="features.card3_desc">Lemos SPED, ECD e ECF e apontamos passivo fiscal oculto com citação de fonte exata, antes que ele trave o fechamento da sua rodada.</p>
         </div>
 
         <!-- Card 4: A IA executa, o banker sênior assina -->
         <div class="feature-card reveal-scale delay-100">
           <div>
-            <h3 class="card-title">A IA executa, o banker sênior revisa</h3>
+            <h3 class="card-title" data-i18n="features.card4_title">A IA executa, o banker sênior revisa</h3>
             <div class="guided-visual">
               <div class="avatars-overlap">
                 <div class="avatar-item" style="background: #E2E8F0;">
@@ -2329,11 +2519,11 @@
               </div>
               <div class="guided-badge">
                 <span class="pulse-dot"></span>
-                <span class="guided-badge-text">Suporte Dedicado</span>
+                <span class="guided-badge-text" data-i18n="features.badge_text">Suporte Dedicado</span>
               </div>
             </div>
           </div>
-          <p class="card-desc">A IA faz o trabalho pesado de higiene fiscal, modelagem e geração de material com velocidade, enquanto um banker sênior revisa a qualidade de tudo antes de chegar até você e antes da assinatura.</p>
+          <p class="card-desc" data-i18n="features.card4_desc">A IA faz o trabalho pesado de higiene fiscal, modelagem e geração de material com velocidade, enquanto um banker sênior revisa a qualidade de tudo antes de chegar até você e antes da assinatura.</p>
         </div>
 
       </div>
@@ -2344,24 +2534,24 @@
   <section class="section how" id="how">
     <div class="container">
       <div class="how-header reveal">
-        <p class="eyebrow">Como funciona</p>
-        <h2 class="section-title">Do material ao fechamento, sem <em class="text-gradient-blue">intermediários.</em></h2>
+        <p class="eyebrow" data-i18n="how.eyebrow">Como funciona</p>
+        <h2 class="section-title" data-i18n="how.title">Do material ao fechamento, sem <em class="text-gradient-blue">intermediários.</em></h2>
       </div>
       <div class="how-grid">
         <div class="reveal-scale delay-100">
-          <p class="how-step-label">01 Mandato</p>
-          <h3 class="how-step-title">Você nos conta a rodada</h3>
-          <p class="how-step-desc">Estágio, quanto quer captar e a tese de uso do capital. Mandato de um lado só, sem conflito.</p>
+          <p class="how-step-label" data-i18n="how.step1_label">01 Mandato</p>
+          <h3 class="how-step-title" data-i18n="how.step1_title">Você nos conta a rodada</h3>
+          <p class="how-step-desc" data-i18n="how.step1_desc">Estágio, quanto quer captar e a tese de uso do capital. Mandato de um lado só, sem conflito.</p>
         </div>
         <div class="reveal-scale delay-200">
-          <p class="how-step-label">02 Preparação e investidor</p>
-          <h3 class="how-step-title">A IA prepara o material e mapeia o investidor certo</h3>
-          <p class="how-step-desc">Higiene fiscal, pitch deck, modelo financeiro, cap table e memorando de uso de capital, cruzados contra a base de investidores por tese e estágio.</p>
+          <p class="how-step-label" data-i18n="how.step2_label">02 Preparação e investidor</p>
+          <h3 class="how-step-title" data-i18n="how.step2_title">A IA prepara o material e mapeia o investidor certo</h3>
+          <p class="how-step-desc" data-i18n="how.step2_desc">Higiene fiscal, pitch deck, modelo financeiro, cap table e memorando de uso de capital, cruzados contra a base de investidores por tese e estágio.</p>
         </div>
         <div class="reveal-scale delay-300">
-          <p class="how-step-label">03 Revisão e fechamento</p>
-          <h3 class="how-step-title">O banker revisa, e você fecha com o investidor</h3>
-          <p class="how-step-desc">Um banker sênior revisa a qualidade de tudo antes da assinatura. A EVA aciona a advocacia para o instrumento (SAFE, mútuo conversível, contrato de subscrição).</p>
+          <p class="how-step-label" data-i18n="how.step3_label">03 Revisão e fechamento</p>
+          <h3 class="how-step-title" data-i18n="how.step3_title">O banker revisa, e você fecha com o investidor</h3>
+          <p class="how-step-desc" data-i18n="how.step3_desc">Um banker sênior revisa a qualidade de tudo antes da assinatura. A EVA aciona a advocacia para o instrumento (SAFE, mútuo conversível, contrato de subscrição).</p>
         </div>
       </div>
     </div>
@@ -2371,37 +2561,37 @@
   <section class="section whom" id="whom">
     <div class="container">
       <div class="whom-header reveal">
-        <p class="eyebrow">Para quem é</p>
-        <h2 class="section-title">Construída para quem não tem <em class="text-gradient-blue">tempo a perder.</em></h2>
+        <p class="eyebrow" data-i18n="whom.eyebrow">Para quem é</p>
+        <h2 class="section-title" data-i18n="whom.title">Construída para quem não tem <em class="text-gradient-blue">tempo a perder.</em></h2>
       </div>
       <div class="whom-grid">
         <div class="whom-card reveal-scale delay-100">
           <div>
-            <p class="whom-role">Founders · Sócios · Fundos</p>
-            <h3 class="whom-title">Quem quer vender</h3>
-            <p class="whom-subtitle">Founders, sócios e fundos com tese de saída.</p>
+            <p class="whom-role" data-i18n="whom.card1_role">Founders · Sócios · Fundos</p>
+            <h3 class="whom-title" data-i18n="whom.card1_title">Quem quer vender</h3>
+            <p class="whom-subtitle" data-i18n="whom.card1_subtitle">Founders, sócios e fundos com tese de saída.</p>
             <ul class="whom-list">
-              <li>→ Dossiê fiscal antecipado para proteger o valuation</li>
-              <li>→ Pacote de CIM e Teaser gerados em alta velocidade</li>
-              <li>→ Grafo de contrapartes para achar o comprador estratégico ideal</li>
-              <li>→ Muralha de informação separada para sigilo absoluto</li>
+              <li data-i18n="whom.card1_li1">→ Dossiê fiscal antecipado para proteger o valuation</li>
+              <li data-i18n="whom.card1_li2">→ Pacote de CIM e Teaser gerados em alta velocidade</li>
+              <li data-i18n="whom.card1_li3">→ Grafo de contrapartes para achar o comprador estratégico ideal</li>
+              <li data-i18n="whom.card1_li4">→ Muralha de informação separada para sigilo absoluto</li>
             </ul>
           </div>
-          <p class="whom-message">Vender sua empresa pelo melhor preço, sem vazamento de informação.</p>
+          <p class="whom-message" data-i18n="whom.card1_msg">Vender sua empresa pelo melhor preço, sem vazamento de informação.</p>
         </div>
         <div class="whom-card reveal-scale delay-200">
           <div>
-            <p class="whom-role">Private Equity · Corporações · Family Offices</p>
-            <h3 class="whom-title">Quem quer comprar</h3>
-            <p class="whom-subtitle">Private Equity, serial acquirers, family offices e M&amp;A corporativo.</p>
+            <p class="whom-role" data-i18n="whom.card2_role">Private Equity · Corporações · Family Offices</p>
+            <h3 class="whom-title" data-i18n="whom.card2_title">Quem quer comprar</h3>
+            <p class="whom-subtitle" data-i18n="whom.card2_subtitle">Private Equity, serial acquirers, family offices e M&amp;A corporativo.</p>
             <ul class="whom-list">
-              <li>→ Screening automatizado de targets alinhados à tese</li>
-              <li>→ Due diligence ágil de passivos fiscais (SPED e ECD)</li>
-              <li>→ Análise profunda de comparáveis de mercado</li>
-              <li>→ Muralha de informação separada sem conflitos de interesse</li>
+              <li data-i18n="whom.card2_li1">→ Screening automatizado de targets alinhados à tese</li>
+              <li data-i18n="whom.card2_li2">→ Due diligence ágil de passivos fiscais (SPED e ECD)</li>
+              <li data-i18n="whom.card2_li3">→ Análise profunda de comparáveis de mercado</li>
+              <li data-i18n="whom.card2_li4">→ Muralha de informação separada sem conflitos de interesse</li>
             </ul>
           </div>
-          <p class="whom-message">Encontrar e executar aquisições de forma acelerada e segura.</p>
+          <p class="whom-message" data-i18n="whom.card2_msg">Encontrar e executar aquisições de forma acelerada e segura.</p>
         </div>
       </div>
     </div>
@@ -2412,85 +2602,85 @@
     <div class="container reveal">
       <div class="faq-card">
         <div class="faq-header-centered">
-          <p class="eyebrow">FAQ</p>
-          <h2 class="faq-main-title">Perguntas<br><em class="text-gradient-blue">frequentes</em></h2>
+          <p class="eyebrow" data-i18n="faq.eyebrow">FAQ</p>
+          <h2 class="faq-main-title" data-i18n="faq.title">Perguntas<br><em class="text-gradient-blue">frequentes</em></h2>
         </div>
         <div class="faq-list">
           <div class="faq-item">
             <button class="faq-question">
-              <span>A IA realmente executa a captação sozinha?</span>
+              <span data-i18n="faq.q1">A IA realmente executa a captação sozinha?</span>
               <span class="faq-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </span>
             </button>
             <div class="faq-answer-wrapper">
               <div class="faq-answer">
-                <p>Não. A IA faz o trabalho pesado: higiene fiscal, modelagem financeira, geração de material e mapeamento de investidor. Um banker sênior revisa cada entregável antes de chegar até você e antes da assinatura. É velocidade de IA com revisão humana em toda entrega, nunca "sem humanos".</p>
+                <p data-i18n="faq.a1">Não. A IA faz o trabalho pesado: higiene fiscal, modelagem financeira, geração de material e mapeamento de investidor. Um banker sênior revisa cada entregável antes de chegar até você e antes da assinatura. É velocidade de IA com revisão humana em toda entrega, nunca "sem humanos".</p>
               </div>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-question">
-              <span>Vocês representam meu investidor também?</span>
+              <span data-i18n="faq.q2">Vocês representam meu investidor também?</span>
               <span class="faq-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </span>
             </button>
             <div class="faq-answer-wrapper">
               <div class="faq-answer">
-                <p>Não. O mandato da EVA é de um lado só: representamos a empresa que capta, não o investidor no mesmo processo. Muralha de informação por mandato, isso é estrutural, não uma política de boa vontade.</p>
+                <p data-i18n="faq.a2">Não. O mandato da EVA é de um lado só: representamos a empresa que capta, não o investidor no mesmo processo. Muralha de informação por mandato, isso é estrutural, não uma política de boa vontade.</p>
               </div>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-question">
-              <span>Meus documentos e dados estão seguros?</span>
+              <span data-i18n="faq.q3">Meus documentos e dados estão seguros?</span>
               <span class="faq-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </span>
             </button>
             <div class="faq-answer-wrapper">
               <div class="faq-answer">
-                <p>SOC 2 Type II e LGPD ativos. Dados nunca são usados para treinar modelo, nunca compartilhados entre clientes, acesso só via link com expiração de 1 hora.</p>
+                <p data-i18n="faq.a3">SOC 2 Type II e LGPD ativos. Dados nunca são usados para treinar modelo, nunca compartilhados entre clientes, acesso só via link com expiração de 1 hora.</p>
               </div>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-question">
-              <span>Quanto tempo leva do mandato até o investidor certo?</span>
+              <span data-i18n="faq.q4">Quanto tempo leva do mandato até o investidor certo?</span>
               <span class="faq-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </span>
             </button>
             <div class="faq-answer-wrapper">
               <div class="faq-answer">
-                <p>Depende do estágio e da tese, geralmente semanas. A IA cruza sua rodada contra a base de investidores assim que o mandato começa.</p>
+                <p data-i18n="faq.a4">Depende do estágio e da tese, geralmente semanas. A IA cruza sua rodada contra a base de investidores assim que o mandato começa.</p>
               </div>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-question">
-              <span>Como a EVA antecipa o risco fiscal antes da diligência do investidor?</span>
+              <span data-i18n="faq.q5">Como a EVA antecipa o risco fiscal antes da diligência do investidor?</span>
               <span class="faq-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </span>
             </button>
             <div class="faq-answer-wrapper">
               <div class="faq-answer">
-                <p>Lemos SPED, ECD e ECF e apontamos passivo fiscal oculto com citação de fonte exata, antes que ele apareça na diligência e trave o fechamento da rodada.</p>
+                <p data-i18n="faq.a5">Lemos SPED, ECD e ECF e apontamos passivo fiscal oculto com citação de fonte exata, antes que ele apareça na diligência e trave o fechamento da rodada.</p>
               </div>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-question">
-              <span>Quanto custa?</span>
+              <span data-i18n="faq.q6">Quanto custa?</span>
               <span class="faq-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </span>
             </button>
             <div class="faq-answer-wrapper">
               <div class="faq-answer">
-                <p>Varia com o estágio e o tamanho da rodada. Fale com a gente pelo WhatsApp e mostramos a estrutura de preço pro seu caso.</p>
+                <p data-i18n="faq.a6">Varia com o estágio e o tamanho da rodada. Fale com a gente pelo WhatsApp e mostramos a estrutura de preço pro seu caso.</p>
               </div>
             </div>
           </div>
@@ -2510,14 +2700,14 @@
           <img src="assets/logo-eva-black.png" alt="EVA" class="footer-logo" />
         </div>
         <div class="footer-col links-col">
-          <span class="footer-col-title">Resources</span>
+          <span class="footer-col-title" data-i18n="footer.resources">Resources</span>
           <div class="footer-col-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of use</a>
+            <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+            <a href="#" data-i18n="footer.terms">Terms of use</a>
           </div>
         </div>
         <div class="footer-col socials-col">
-          <span class="footer-col-title">Socials</span>
+          <span class="footer-col-title" data-i18n="footer.socials">Socials</span>
           <div class="footer-social-icons">
             <a href="https://www.linkedin.com/company/evapayy" class="social-icon-link linkedin-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2530,7 +2720,7 @@
       </div>
       <div class="footer-divider"></div>
       <div class="footer-bottom">
-        <p class="footer-copyright">© 2026 EVA Capital. Todos os direitos reservados. Desenvolvido com alma brasileira.</p>
+        <p class="footer-copyright" data-i18n="footer.copyright">© 2026 EVA Capital. Todos os direitos reservados. Desenvolvido com alma brasileira.</p>
       </div>
     </div>
   </footer>
@@ -2834,5 +3024,379 @@
     });
   </script>
 
+  <!-- ── 6. LANGUAGE SWITCHER I18N SCRIPT ── -->
+  <script>
+    (function() {
+      const translations = {
+        pt: {
+          'nav.contact': 'Contact Us',
+          'hero.sub': '💰 A rodada inteira, você só assina',
+          'hero.backed': 'Backed by:',
+          'hero.cta_primary': 'Falar sobre sua rodada',
+          'hero.cta_ghost': 'Ver como funciona',
+          'hero.video_fallback': 'Seu navegador não suporta vídeos HTML5.',
+          'problem.eyebrow': 'O problema',
+          'problem.title': 'Captar uma rodada é <em class="text-gradient-blue">lento, caro e incerto.</em>',
+          'problem.card1_title': 'Achar o investidor certo depende de relacionamento e sorte',
+          'problem.card1_desc': 'Cruzar sua tese contra o investidor com apetite real é limitado por redes de relacionamentos pessoais e processos lentos.',
+          'problem.card2_title': 'Produzir o material consome semanas',
+          'problem.card2_desc': 'Elaborar pitch deck, modelo financeiro, cap table e memorando de uso de capital exige centenas de horas que podiam ir para a conversa com investidor.',
+          'problem.card3_title': 'A diligência do investidor trava o fechamento na reta final',
+          'problem.card3_desc': 'Passivos fiscais não mapeados aparecem no final do processo, travando a rodada ou derrubando o valuation negociado.',
+          'features.eyebrow': 'O que fazemos',
+          'features.title': 'Uma firma que executa a captação inteira, <em class="text-gradient-blue">do material ao fechamento.</em>',
+          'features.card1_title': 'Encontramos o investidor certo',
+          'features.card1_desc': 'Cruzamos sua tese contra uma base de investidores por estágio, ticket e setor para priorizar quem tem apetite real pela sua rodada.',
+          'features.card2_title': 'Entregamos o material de captação pronto',
+          'features.prompt1': 'Pitch Deck & Cap Table',
+          'features.prompt2': 'Modelo Financeiro & Valuation',
+          'features.prompt3': 'Memorando de Uso de Capital',
+          'features.prompt4': 'Dossiê Fiscal (SPED/ECD/ECF)',
+          'features.card2_desc': 'Geramos com agilidade todo o material da rodada: pitch deck, modelo financeiro, cap table e memorando de uso de capital, prontos para o investidor decidir.',
+          'features.card3_title': 'Antecipamos o risco fiscal antes da diligência do investidor',
+          'features.stat1_label': 'Bases Analisadas',
+          'features.stat2_label': 'Inconsistências',
+          'features.source1': 'SPED Fiscal',
+          'features.source2': 'ECD e ECF',
+          'features.source3': 'Passivo Fiscal Oculto',
+          'features.card3_desc': 'Lemos SPED, ECD e ECF e apontamos passivo fiscal oculto com citação de fonte exata, antes que ele trave o fechamento da sua rodada.',
+          'features.card4_title': 'A IA executa, o banker sênior revisa',
+          'features.badge_text': 'Suporte Dedicado',
+          'features.card4_desc': 'A IA faz o trabalho pesado de higiene fiscal, modelagem e geração de material com velocidade, enquanto um banker sênior revisa a qualidade de tudo antes de chegar até você e antes da assinatura.',
+          'how.eyebrow': 'Como funciona',
+          'how.title': 'Do material ao fechamento, sem <em class="text-gradient-blue">intermediários.</em>',
+          'how.step1_label': '01 Mandato',
+          'how.step1_title': 'Você nos conta a rodada',
+          'how.step1_desc': 'Estágio, quanto quer captar e a tese de uso do capital. Mandato de um lado só, sem conflito.',
+          'how.step2_label': '02 Preparação e investidor',
+          'how.step2_title': 'A IA prepara o material e mapeia o investidor certo',
+          'how.step2_desc': 'Higiene fiscal, pitch deck, modelo financeiro, cap table e memorando de uso de capital, cruzados contra a base de investidores por tese e estágio.',
+          'how.step3_label': '03 Revisão e fechamento',
+          'how.step3_title': 'O banker revisa, e você fecha com o investidor',
+          'how.step3_desc': 'Um banker sênior revisa a qualidade de tudo antes da assinatura. A EVA aciona a advocacia para o instrumento (SAFE, mútuo conversível, contrato de subscrição).',
+          'whom.eyebrow': 'Para quem é',
+          'whom.title': 'Construída para quem não tem <em class="text-gradient-blue">tempo a perder.</em>',
+          'whom.card1_role': 'Founders · Sócios · Fundos',
+          'whom.card1_title': 'Quem quer vender',
+          'whom.card1_subtitle': 'Founders, sócios e fundos com tese de saída.',
+          'whom.card1_li1': '→ Dossiê fiscal antecipado para proteger o valuation',
+          'whom.card1_li2': '→ Pacote de CIM e Teaser gerados em alta velocidade',
+          'whom.card1_li3': '→ Grafo de contrapartes para achar o comprador estratégico ideal',
+          'whom.card1_li4': '→ Muralha de informação separada para sigilo absoluto',
+          'whom.card1_msg': 'Vender sua empresa pelo melhor preço, sem vazamento de informação.',
+          'whom.card2_role': 'Private Equity · Corporações · Family Offices',
+          'whom.card2_title': 'Quem quer comprar',
+          'whom.card2_subtitle': 'Private Equity, serial acquirers, family offices e M&amp;A corporativo.',
+          'whom.card2_li1': '→ Screening automatizado de targets alinhados à tese',
+          'whom.card2_li2': '→ Due diligence ágil de passivos fiscais (SPED e ECD)',
+          'whom.card2_li3': '→ Análise profunda de comparáveis de mercado',
+          'whom.card2_li4': '→ Muralha de informação separada sem conflitos de interesse',
+          'whom.card2_msg': 'Encontrar e executar aquisições de forma acelerada e segura.',
+          'faq.eyebrow': 'FAQ',
+          'faq.title': 'Perguntas<br><em class="text-gradient-blue">frequentes</em>',
+          'faq.q1': 'A IA realmente executa a captação sozinha?',
+          'faq.a1': 'Não. A IA faz o trabalho pesado: higiene fiscal, modelagem financeira, geração de material e mapeamento de investidor. Um banker sênior revisa cada entregável antes de chegar até você e antes da assinatura. É velocidade de IA com revisão humana em toda entrega, nunca "sem humanos".',
+          'faq.q2': 'Vocês representam meu investidor também?',
+          'faq.a2': 'Não. O mandato da EVA é de um lado só: representamos a empresa que capta, não o investidor no mesmo processo. Muralha de informação por mandato, isso é estrutural, não uma política de boa vontade.',
+          'faq.q3': 'Meus documentos e dados estão seguros?',
+          'faq.a3': 'SOC 2 Type II e LGPD ativos. Dados nunca são usados para treinar modelo, nunca compartilhados entre clientes, acesso só via link com expiração de 1 hora.',
+          'faq.q4': 'Quanto tempo leva do mandato até o investidor certo?',
+          'faq.a4': 'Depende do estágio e da tese, geralmente semanas. A IA cruza sua rodada contra a base de investidores assim que o mandato começa.',
+          'faq.q5': 'Como a EVA antecipa o risco fiscal antes da diligência do investidor?',
+          'faq.a5': 'Lemos SPED, ECD e ECF e apontamos passivo fiscal oculto com citação de fonte exata, antes que ele apareça na diligência e trave o fechamento da rodada.',
+          'faq.q6': 'Quanto custa?',
+          'faq.a6': 'Varia com o estágio e o tamanho da rodada. Fale com a gente pelo WhatsApp e mostramos a estrutura de preço pro seu caso.',
+          'footer.resources': 'Resources',
+          'footer.privacy': 'Política de Privacidade',
+          'footer.terms': 'Termos de uso',
+          'footer.socials': 'Redes Sociais',
+          'footer.copyright': '© 2026 EVA Capital. Todos os direitos reservados. Desenvolvido com alma brasileira.'
+        },
+        en: {
+          'nav.contact': 'Contact Us',
+          'hero.sub': '💰 The entire round, you just sign',
+          'hero.backed': 'Backed by:',
+          'hero.cta_primary': 'Talk about your round',
+          'hero.cta_ghost': 'See how it works',
+          'hero.video_fallback': 'Your browser does not support HTML5 videos.',
+          'problem.eyebrow': 'The problem',
+          'problem.title': 'Raising a round is <em class="text-gradient-blue">slow, expensive, and uncertain.</em>',
+          'problem.card1_title': 'Finding the right investor depends on relationships and luck',
+          'problem.card1_desc': 'Matching your thesis against investors with real appetite is constrained by personal networks and slow processes.',
+          'problem.card2_title': 'Producing materials consumes weeks',
+          'problem.card2_desc': 'Drafting pitch decks, financial models, cap tables, and use-of-funds memos requires hundreds of hours that could go toward investor conversations.',
+          'problem.card3_title': 'Investor due diligence stalls closing at the finish line',
+          'problem.card3_desc': 'Unmapped tax liabilities surface late in the process, stalling the round or driving down negotiated valuation.',
+          'features.eyebrow': 'What we do',
+          'features.title': 'A firm that executes the entire fundraise, <em class="text-gradient-blue">from materials to closing.</em>',
+          'features.card1_title': 'We find the right investor',
+          'features.card1_desc': 'We match your thesis against an investor database by stage, check size, and sector to prioritize those with real appetite for your round.',
+          'features.card2_title': 'We deliver ready-to-go fundraising materials',
+          'features.prompt1': 'Pitch Deck & Cap Table',
+          'features.prompt2': 'Financial Model & Valuation',
+          'features.prompt3': 'Use of Funds Memorandum',
+          'features.prompt4': 'Tax Dossier (SPED/ECD/ECF)',
+          'features.card2_desc': 'We rapidly generate all round materials: pitch deck, financial model, cap table, and use-of-funds memo, ready for investor decisions.',
+          'features.card3_title': 'We anticipate tax risk before investor due diligence',
+          'features.stat1_label': 'Analyzed Databases',
+          'features.stat2_label': 'Inconsistencies',
+          'features.source1': 'SPED Fiscal',
+          'features.source2': 'ECD and ECF',
+          'features.source3': 'Hidden Tax Liability',
+          'features.card3_desc': 'We read SPED, ECD, and ECF data to pinpoint hidden tax liabilities with exact source citations before it stalls your round closing.',
+          'features.card4_title': 'AI executes, senior banker reviews',
+          'features.badge_text': 'Dedicated Support',
+          'features.card4_desc': 'AI handles the heavy lifting of tax hygiene, modeling, and material generation at speed, while a senior banker reviews quality before it reaches you and before signing.',
+          'how.eyebrow': 'How it works',
+          'how.title': 'From materials to closing, without <em class="text-gradient-blue">middlemen.</em>',
+          'how.step1_label': '01 Mandate',
+          'how.step1_title': 'You tell us about your round',
+          'how.step1_desc': 'Stage, fundraising target, and capital allocation thesis. Single-sided mandate, zero conflict.',
+          'how.step2_label': '02 Prep & Investors',
+          'how.step2_title': 'AI prepares materials and maps the right investor',
+          'how.step2_desc': 'Tax hygiene, pitch deck, financial model, cap table, and use-of-funds memo, matched against investor database by thesis and stage.',
+          'how.step3_label': '03 Review & Closing',
+          'how.step3_title': 'Banker reviews, and you close with the investor',
+          'how.step3_desc': 'A senior banker reviews quality before signing. EVA coordinates legal counsel for the agreement (SAFE, convertible note, subscription agreement).',
+          'whom.eyebrow': 'Who it\'s for',
+          'whom.title': 'Built for those with <em class="text-gradient-blue">no time to lose.</em>',
+          'whom.card1_role': 'Founders · Partners · Funds',
+          'whom.card1_title': 'Sellers',
+          'whom.card1_subtitle': 'Founders, partners, and funds with an exit thesis.',
+          'whom.card1_li1': '→ Early tax dossier to protect valuation',
+          'whom.card1_li2': '→ High-speed generated CIM and Teaser package',
+          'whom.card1_li3': '→ Counterparty graph to find ideal strategic buyer',
+          'whom.card1_li4': '→ Separate information barrier for total confidentiality',
+          'whom.card1_msg': 'Sell your company at top valuation, without data leaks.',
+          'whom.card2_role': 'Private Equity · Corporations · Family Offices',
+          'whom.card2_title': 'Buyers',
+          'whom.card2_subtitle': 'Private Equity, serial acquirers, family offices, and corporate M&A.',
+          'whom.card2_li1': '→ Automated target screening aligned with thesis',
+          'whom.card2_li2': '→ Fast due diligence on tax liabilities (SPED & ECD)',
+          'whom.card2_li3': '→ Deep analysis of market comparables',
+          'whom.card2_li4': '→ Separate information barrier with zero conflicts of interest',
+          'whom.card2_msg': 'Find and execute acquisitions rapidly and securely.',
+          'faq.eyebrow': 'FAQ',
+          'faq.title': 'Frequently asked<br><em class="text-gradient-blue">questions</em>',
+          'faq.q1': 'Does AI really execute the raise alone?',
+          'faq.a1': 'No. AI handles the heavy lifting: tax hygiene, financial modeling, material generation, and investor mapping. A senior banker reviews every deliverable before it reaches you and before signing. It is AI speed with human review on every delivery, never "without humans".',
+          'faq.q2': 'Do you represent my investor as well?',
+          'faq.a2': 'No. EVA\'s mandate is single-sided: we represent the company raising, not the investor in the same process. Information barrier per mandate is structural, not a goodwill policy.',
+          'faq.q3': 'Are my documents and data secure?',
+          'faq.a3': 'SOC 2 Type II and LGPD active. Data is never used to train models, never shared across clients, access via 1-hour expiring links only.',
+          'faq.q4': 'How long from mandate to finding the right investor?',
+          'faq.a4': 'Depends on stage and thesis, usually weeks. AI matches your round against the investor database as soon as mandate starts.',
+          'faq.q5': 'How does EVA anticipate tax risk before investor due diligence?',
+          'faq.a5': 'We read SPED, ECD, and ECF and pinpoint hidden tax liabilities with exact source citations before they appear in due diligence and stall closing.',
+          'faq.q6': 'How much does it cost?',
+          'faq.a6': 'Varies by stage and round size. Reach out on WhatsApp and we\'ll show you the pricing structure for your case.',
+          'footer.resources': 'Resources',
+          'footer.privacy': 'Privacy Policy',
+          'footer.terms': 'Terms of use',
+          'footer.socials': 'Socials',
+          'footer.copyright': '© 2026 EVA Capital. All rights reserved. Built with Brazilian soul.'
+        },
+        es: {
+          'nav.contact': 'Contáctanos',
+          'hero.sub': '💰 Toda la ronda, tú solo firmas',
+          'hero.backed': 'Backed by:',
+          'hero.cta_primary': 'Habla sobre tu ronda',
+          'hero.cta_ghost': 'Ver cómo funciona',
+          'hero.video_fallback': 'Tu navegador no soporta videos HTML5.',
+          'problem.eyebrow': 'El problema',
+          'problem.title': 'Levantar una ronda es <em class="text-gradient-blue">lento, costoso e incierto.</em>',
+          'problem.card1_title': 'Encontrar al inversor adecuado depende de relaciones y suerte',
+          'problem.card1_desc': 'Cruzar tu tesis contra inversores con apetito real está limitado por redes personales y procesos lentos.',
+          'problem.card2_title': 'Producir el material consume semanas',
+          'problem.card2_desc': 'Elaborar el pitch deck, modelo financiero, cap table y memorando de uso de capital requiere cientos de horas que podrían dedicarse a hablar con inversores.',
+          'problem.card3_title': 'La debida diligencia del inversor frena el cierre en la recta final',
+          'problem.card3_desc': 'Los pasivos fiscales no mapeados aparecen al final del proceso, frenando la ronda o reduciendo la valoración negociada.',
+          'features.eyebrow': 'Lo que hacemos',
+          'features.title': 'Una firma que ejecuta la ronda completa, <em class="text-gradient-blue">desde el material hasta el cierre.</em>',
+          'features.card1_title': 'Encontramos al inversor adecuado',
+          'features.card1_desc': 'Cruzamos tu tesis contra una base de datos de inversores por etapa, ticket y sector para priorizar a quienes tienen apetite real por tu ronda.',
+          'features.card2_title': 'Entregamos el material de ronda listo',
+          'features.prompt1': 'Pitch Deck & Cap Table',
+          'features.prompt2': 'Modelo Financiero & Valoración',
+          'features.prompt3': 'Memorando de Uso de Capital',
+          'features.prompt4': 'Dossier Fiscal (SPED/ECD/ECF)',
+          'features.card2_desc': 'Generamos con agilidad todo el material de la ronda: pitch deck, modelo financiero, cap table y memorando de uso de capital, listos para la decisión del inversor.',
+          'features.card3_title': 'Anticipamos el riesgo fiscal antes de la diligencia del inversor',
+          'features.stat1_label': 'Bases Analisadas',
+          'features.stat2_label': 'Inconsistencias',
+          'features.source1': 'SPED Fiscal',
+          'features.source2': 'ECD y ECF',
+          'features.source3': 'Pasivo Fiscal Oculto',
+          'features.card3_desc': 'Leemos SPED, ECD y ECF y señalamos el pasivo fiscal oculto con cita de fuente exacta, antes de que frene el cierre de tu ronda.',
+          'features.card4_title': 'La IA ejecuta, el banker sénior revisa',
+          'features.badge_text': 'Soporte Dedicado',
+          'features.card4_desc': 'La IA hace el trabajo pesado de higiene fiscal, modelado y generación de material con velocidad, mientras un banker sénior revisa la calidad de todo antes de que llegue a ti y antes de la firma.',
+          'how.eyebrow': 'Cómo funciona',
+          'how.title': 'Del material al cierre, sin <em class="text-gradient-blue">intermediarios.</em>',
+          'how.step1_label': '01 Mandato',
+          'how.step1_title': 'Nos cuentas sobre tu ronda',
+          'how.step1_desc': 'Etapa, cuánto quieres levantar y la tesis de uso de capital. Mandato de un solo lado, sin conflicto.',
+          'how.step2_label': '02 Preparación e inversor',
+          'how.step2_title': 'La IA prepara el material y mapea al inversor adecuado',
+          'how.step2_desc': 'Higiene fiscal, pitch deck, modelo financiero, cap table y memorando de uso de capital, cruzados contra la base de inversores por tesis y etapa.',
+          'how.step3_label': '03 Revisión y cierre',
+          'how.step3_title': 'El banker revisa y tú cierras con el inversor',
+          'how.step3_desc': 'Un banker sénior revisa la calidad de todo antes de la firma. EVA coordina el asesoramiento legal para el instrumento (SAFE, nota convertible, contrato de suscripción).',
+          'whom.eyebrow': 'Para quién es',
+          'whom.title': 'Construida para quienes no tienen <em class="text-gradient-blue">tiempo que perder.</em>',
+          'whom.card1_role': 'Founders · Socios · Fondos',
+          'whom.card1_title': 'Quienes quieren vender',
+          'whom.card1_subtitle': 'Founders, socios y fondos con tesis de salida.',
+          'whom.card1_li1': '→ Dossier fiscal anticipado para proteger la valoración',
+          'whom.card1_li2': '→ Paquete de CIM y Teaser generados a alta velocidad',
+          'whom.card1_li3': '→ Grafo de contrapartes para hallar al comprador estratégico ideal',
+          'whom.card1_li4': '→ Muralla de información separada para confidencialidad absoluta',
+          'whom.card1_msg': 'Vender tu empresa al mejor precio, sin filtraciones de información.',
+          'whom.card2_role': 'Private Equity · Corporaciones · Family Offices',
+          'whom.card2_title': 'Quienes quieren comprar',
+          'whom.card2_subtitle': 'Private Equity, compradores en serie, family offices y M&A corporativo.',
+          'whom.card2_li1': '→ Screening automatizado de targets alineados a la tesis',
+          'whom.card2_li2': '→ Due diligence ágil de pasivos fiscales (SPED y ECD)',
+          'whom.card2_li3': '→ Análisis profundo de comparables de mercado',
+          'whom.card2_li4': '→ Muralla de información separada sin conflictos de interés',
+          'whom.card2_msg': 'Encontrar y ejecutar adquisiciones de forma acelerada y segura.',
+          'faq.eyebrow': 'FAQ',
+          'faq.title': 'Preguntas<br><em class="text-gradient-blue">frequentes</em>',
+          'faq.q1': '¿La IA realmente ejecuta la ronda sola?',
+          'faq.a1': 'No. La IA hace el trabajo pesado: higiene fiscal, modelado financiero, generación de material y mapeo de inversores. Un banker sénior revisa cada entregable antes de que llegue a ti y antes de la firma. Es velocidad de IA con revisión humana en cada entrega, nunca "sin humanos".',
+          'faq.q2': '¿Representan también a mi inversor?',
+          'faq.a2': 'No. El mandato de EVA es de un solo lado: representamos a la empresa que levanta capital, no al inversor en el mismo proceso. Muralla de información por mandato, esto es estructural, no una política de buena voluntad.',
+          'faq.q3': '¿Mis documentos y datos están seguros?',
+          'faq.a3': 'SOC 2 Type II y LGPD activos. Los datos nunca se usan para entrenar modelos, nunca se comparten entre clientes y el acceso es solo vía enlace con expiración de 1 hora.',
+          'faq.q4': '¿Cuánto tiempo lleva desde el mandato hasta el inversor adecuado?',
+          'faq.a4': 'Depende de la etapa y la tesis, generalmente semanas. La IA cruza tu ronda contra la base de datos de inversores tan pronto inicia el mandato.',
+          'faq.q5': '¿Cómo anticipa EVA el riesgo fiscal antes de la diligencia del inversor?',
+          'faq.a5': 'Leemos SPED, ECD y ECF y señalamos pasivos fiscales ocultos con cita de fuente exacta, antes de que aparezcan en la diligencia y frenen el cierre de la ronda.',
+          'faq.q6': '¿Cuánto cuesta?',
+          'faq.a6': 'Varía según la etapa y el tamaño de la ronda. Habla con nosotros por WhatsApp y te mostramos la estructura de precios para tu caso.',
+          'footer.resources': 'Recursos',
+          'footer.privacy': 'Política de Privacidad',
+          'footer.terms': 'Términos de uso',
+          'footer.socials': 'Redes Sociales',
+          'footer.copyright': '© 2026 EVA Capital. Todos los derechos reservados. Desarrollado con alma brasileira.'
+        }
+      };
+
+      const flagSVGs = {
+        pt: `<svg class="lang-flag-icon" viewBox="0 0 512 512" width="22" height="22">
+              <rect width="512" height="512" fill="#009b3a"/>
+              <polygon points="256,70 472,256 256,442 40,256" fill="#fedf00"/>
+              <circle cx="256" cy="256" r="105" fill="#002776"/>
+              <path d="M156,270 Q256,230 356,270" stroke="#ffffff" stroke-width="14" fill="none"/>
+            </svg>`,
+        en: `<svg class="lang-flag-icon" viewBox="0 0 512 512" width="22" height="22">
+              <clipPath id="us-circle-curr"><circle cx="256" cy="256" r="256"/></clipPath>
+              <g clip-path="url(#us-circle-curr)">
+                <rect width="512" height="512" fill="#bb133e"/>
+                <path d="M0,39.38h512v39.38H0z M0,118.15h512v39.38H0z M0,196.92h512v39.38H0z M0,275.69h512v39.38H0z M0,354.46h512v39.38H0z M0,433.23h512v39.38H0z" fill="#fff"/>
+                <rect width="230" height="275.7" fill="#002147"/>
+                <g fill="#fff">
+                  <circle cx="38" cy="34" r="9"/><circle cx="115" cy="34" r="9"/><circle cx="192" cy="34" r="9"/>
+                  <circle cx="76" cy="68" r="9"/><circle cx="153" cy="68" r="9"/>
+                  <circle cx="38" cy="102" r="9"/><circle cx="115" cy="102" r="9"/><circle cx="192" cy="102" r="9"/>
+                  <circle cx="76" cy="136" r="9"/><circle cx="153" cy="136" r="9"/>
+                  <circle cx="38" cy="170" r="9"/><circle cx="115" cy="170" r="9"/><circle cx="192" cy="170" r="9"/>
+                  <circle cx="76" cy="204" r="9"/><circle cx="153" cy="204" r="9"/>
+                  <circle cx="38" cy="238" r="9"/><circle cx="115" cy="238" r="9"/><circle cx="192" cy="238" r="9"/>
+                </g>
+              </g>
+            </svg>`,
+        es: `<svg class="lang-flag-icon" viewBox="0 0 512 512" width="22" height="22">
+              <clipPath id="es-circle-curr"><circle cx="256" cy="256" r="256"/></clipPath>
+              <g clip-path="url(#es-circle-curr)">
+                <rect width="512" height="128" fill="#aa152b"/>
+                <rect y="128" width="512" height="256" fill="#f1bf00"/>
+                <rect y="384" width="512" height="128" fill="#aa152b"/>
+              </g>
+            </svg>`
+      };
+
+      let currentLang = localStorage.getItem('eva_lang') || 'pt';
+
+      function setLanguage(lang) {
+        if (!translations[lang]) return;
+        currentLang = lang;
+        localStorage.setItem('eva_lang', lang);
+
+        document.documentElement.lang = lang === 'pt' ? 'pt-BR' : (lang === 'es' ? 'es-ES' : 'en');
+
+        // Update current button display
+        const flagEl = document.getElementById('langFlagCurrent');
+        const badgeEl = document.getElementById('langCodeBadge');
+        if (flagEl) flagEl.innerHTML = flagSVGs[lang];
+        if (badgeEl) badgeEl.textContent = lang.toUpperCase();
+
+        // Update active state in dropdown
+        document.querySelectorAll('.lang-option').forEach(opt => {
+          if (opt.dataset.lang === lang) {
+            opt.classList.add('active');
+          } else {
+            opt.classList.remove('active');
+          }
+        });
+
+        const waLinks = {
+          pt: 'https://w.app/evabr',
+          en: 'https://w.app/evaen',
+          es: 'https://w.app/evaesp'
+        };
+
+        if (waLinks[lang]) {
+          document.querySelectorAll('[data-wa-link]').forEach(el => {
+            el.href = waLinks[lang];
+          });
+        }
+
+        // Update all text nodes with data-i18n attribute
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (translations[lang] && translations[lang][key]) {
+            el.innerHTML = translations[lang][key];
+          }
+        });
+      }
+
+      window.setLanguage = setLanguage;
+
+      function initLangEvents() {
+        const btn = document.getElementById('langBtnCircle');
+        const wrapper = document.querySelector('.lang-switcher-wrapper');
+
+        if (btn) {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const nextLang = currentLang === 'pt' ? 'en' : 'pt';
+            setLanguage(nextLang);
+          });
+        }
+
+        document.querySelectorAll('.lang-option').forEach(opt => {
+          opt.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const lang = opt.dataset.lang;
+            setLanguage(lang);
+            if (wrapper) wrapper.classList.remove('active');
+          });
+        });
+
+        document.addEventListener('click', () => {
+          if (wrapper) wrapper.classList.remove('active');
+        });
+
+        setLanguage(currentLang);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLangEvents);
+      } else {
+        initLangEvents();
+      }
+    })();
+  </script>
 </body>
 </html>
