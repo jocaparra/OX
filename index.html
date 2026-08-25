@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EVA | Autopilot de Due Diligence para Fundos de VC</title>
-  <meta name="description" content="A EVA executa a due diligence completa de startups para fundos de VC. Navega a web via computer-use, verifica dados na fonte, entrega o memorando pronto com DCF e roda 100% na sua máquina." />
+  <title>EVA | VC Due Diligence Autopilot</title>
+  <meta name="description" content="EVA performs end-to-end deal due diligence for VC funds. Navigates the web via computer use, verifies public data at the source, delivers the finished memo with DCF, and runs 100% on your machine." />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="apple-touch-icon" href="assets/favicon.png" />
   <style>
@@ -2275,7 +2275,7 @@
         <img src="assets/logo-eva-black.png" alt="EVA" class="logo-mark" />
       </a>
       <div class="nav-right">
-        <a href="https://w.app/evabr" class="nav-btn-tropicalia" target="_blank" rel="noopener noreferrer" data-wa-link>
+        <a href="https://w.app/evaen" class="nav-btn-tropicalia" target="_blank" rel="noopener noreferrer" data-wa-link>
           <span class="btn-text-default" data-i18n="nav.contact">Contact Us</span>
           <span class="ripple-layer layer-1"></span>
           <span class="ripple-layer layer-2"></span>
@@ -2285,19 +2285,30 @@
 
         <!-- Circular Language Switcher -->
         <div class="lang-switcher-wrapper">
-          <button type="button" class="lang-btn-circle" id="langBtnCircle" aria-label="Alternar idioma / Switch language" title="Português / English">
+          <button type="button" class="lang-btn-circle" id="langBtnCircle" aria-label="Switch language / Alternar idioma" title="English / Português">
             <span class="lang-flag-current" id="langFlagCurrent">
               <svg class="lang-flag-icon" viewBox="0 0 512 512" width="22" height="22">
-                <rect width="512" height="512" fill="#009b3a"/>
-                <polygon points="256,70 472,256 256,442 40,256" fill="#fedf00"/>
-                <circle cx="256" cy="256" r="105" fill="#002776"/>
-                <path d="M156,270 Q256,230 356,270" stroke="#ffffff" stroke-width="14" fill="none"/>
+                <clipPath id="us-circle-curr"><circle cx="256" cy="256" r="256"/></clipPath>
+                <g clip-path="url(#us-circle-curr)">
+                  <rect width="512" height="512" fill="#bb133e"/>
+                  <path d="M0,39.38h512v39.38H0z M0,118.15h512v39.38H0z M0,196.92h512v39.38H0z M0,275.69h512v39.38H0z M0,354.46h512v39.38H0z M0,433.23h512v39.38H0z" fill="#fff"/>
+                  <rect width="230" height="275.7" fill="#002147"/>
+                  <g fill="#fff">
+                    <circle cx="38" cy="34" r="9"/><circle cx="115" cy="34" r="9"/><circle cx="192" cy="34" r="9"/>
+                    <circle cx="76" cy="68" r="9"/><circle cx="153" cy="68" r="9"/>
+                    <circle cx="38" cy="102" r="9"/><circle cx="115" cy="102" r="9"/><circle cx="192" cy="102" r="9"/>
+                    <circle cx="76" cy="136" r="9"/><circle cx="153" cy="136" r="9"/>
+                    <circle cx="38" cy="170" r="9"/><circle cx="115" cy="170" r="9"/><circle cx="192" cy="170" r="9"/>
+                    <circle cx="76" cy="204" r="9"/><circle cx="153" cy="204" r="9"/>
+                    <circle cx="38" cy="238" r="9"/><circle cx="115" cy="238" r="9"/><circle cx="192" cy="238" r="9"/>
+                  </g>
+                </g>
               </svg>
             </span>
-            <span class="lang-code-badge" id="langCodeBadge">PT</span>
+            <span class="lang-code-badge" id="langCodeBadge">EN</span>
           </button>
           <div class="lang-dropdown" id="langDropdown">
-            <button type="button" class="lang-option active" data-lang="pt">
+            <button type="button" class="lang-option" data-lang="pt">
               <svg class="lang-flag-icon" viewBox="0 0 512 512" width="20" height="20">
                 <rect width="512" height="512" fill="#009b3a"/>
                 <polygon points="256,70 472,256 256,442 40,256" fill="#fedf00"/>
@@ -2306,7 +2317,7 @@
               </svg>
               <span>🇧🇷 Brasil (PT)</span>
             </button>
-            <button type="button" class="lang-option" data-lang="en">
+            <button type="button" class="lang-option active" data-lang="en">
               <svg class="lang-flag-icon" viewBox="0 0 512 512" width="20" height="20">
                 <clipPath id="us-circle-opt"><circle cx="256" cy="256" r="256"/></clipPath>
                 <g clip-path="url(#us-circle-opt)">
@@ -3313,7 +3324,7 @@
             </svg>`
       };
 
-      let currentLang = localStorage.getItem('eva_lang') || 'pt';
+      let currentLang = localStorage.getItem('eva_lang') || 'en';
 
       function setLanguage(lang) {
         if (!translations[lang]) return;
