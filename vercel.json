@@ -5,6 +5,11 @@
       "source": "/evanewlp",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/indexv2",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }

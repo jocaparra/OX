@@ -18,10 +18,7 @@ O público são GPs, partners, analistas e associates de fundos de VC no Brasil 
 | Caminho | Conteúdo |
 | --- | --- |
 | `index.html` | A landing page inteira: HTML, CSS e JavaScript no mesmo arquivo |
-| `indexv2.html` | Cópia de `index.html` |
-| `assets/` | Imagens, logos, favicon e o vídeo do hero (`Video hero.mp4`) |
-| `backup/` | Versões antigas da página (`index v1 eva.html`, `tropicalia.html`) |
-| `TICKERS/` | Logos de empresas e fontes de dados usados como material de apoio |
+| `assets/` | Imagens, logos, favicon e o vídeo do hero (`Video hero.mp4`) usados pela página |
 | `vercel.json` | Configuração de deploy na Vercel |
 
 ### Seções da página
@@ -46,4 +43,4 @@ Depois acesse http://localhost:8000.
 
 ## Deploy
 
-O deploy é feito pela **Vercel**: cada push no `main` publica o site automaticamente. O `vercel.json` ativa URLs sem extensão (`cleanUrls`) e redireciona `/evanewlp` para `/`.
+O deploy é feito pela **Vercel**: cada push no `main` publica o site automaticamente. O `vercel.json` ativa URLs sem extensão (`cleanUrls`) e redireciona `/evanewlp` e `/indexv2` para `/`.
