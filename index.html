@@ -641,6 +641,9 @@
       -webkit-text-fill-color: transparent;
       color: transparent;
       display: inline-block;
+      /* Estende a área pintada pelo gradiente até as descendentes (y, p, q, g) sem alterar o layout */
+      padding-bottom: 0.15em;
+      margin-bottom: -0.15em;
     }
 
     .hero-sub {
